@@ -1,0 +1,50 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding-top: 82px;
+}
+
+.title {
+  text-align: center;
+}
+
+.quote {
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+
+  &__parth {
+    text-align: end;
+  }
+}
+
+.about {
+  margin-top: 30px;
+}
+
+.description {
+  list-style: none;
+}
+
+.service {
+  border: 1px solid;
+  margin-top: 10px;
+
+  &:nth-child(1) {
+    border-color: var(--brows);
+  }
+
+  &:nth-child(2) {
+    border-color: var(--lips);
+  }
+
+  &:nth-child(3) {
+    border-color: var(--eyelashes);
+  }
+}
+
+.link {
+  display: block;
+  padding: 10px;
+}
