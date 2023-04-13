@@ -26,11 +26,17 @@ export default function Home() {
         <Works pathname='/brows.jpg' id="brows"
           heading='Перманентный татуаж бровей'
           description={BROWS_DESCRIPTION} />
-        <Works pathname='/brows.jpg' id="lips"
+        <Works pathname='/lips.png' id="lips"
           heading='Татуаж губ'
           description={BROWS_DESCRIPTION} />
-        <Works pathname='/brows.jpg' id="eyelashes"
-          heading='Татуаж ресниц'
+        <Works pathname='/eyelashes.jpg' id="eyelashes"
+          heading='Татуаж век'
+          description={BROWS_DESCRIPTION} />
+        <Works pathname='/correction.jpg' id="correction"
+          heading='Коррекция татуажа'
+          description={BROWS_DESCRIPTION} />
+        <Works pathname='/overlap.jpg' id="overlap"
+          heading='Перекрытие татуажа'
           description={BROWS_DESCRIPTION} />
       </main>
       <Footer />
