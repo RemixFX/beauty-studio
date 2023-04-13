@@ -1,0 +1,32 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  background: #000;
+  padding: 1rem;
+}
+
+.container {
+  
+}
+
+.adress span{
+  font-style: italic;
+}
+
+.adress, .copyright, .contact, .groups {
+  padding-bottom: 8px;
+}
+
+.groups {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.group {
+  padding: 2px 0;
+  margin: 5px 10px;
+  border-top: 1px solid var(--yellow);
+  border-bottom: 1px solid var(--yellow);
+}

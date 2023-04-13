@@ -6,6 +6,8 @@ import Link from 'next/link'
 import Header from '@/components/Header/header'
 import Description from '@/components/Description/description'
 import Works from '@/components/Works/works'
+import { BROWS_DESCRIPTION } from '@/config/const.js'
+import Footer from '@/components/Footer/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,12 +21,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Header/>
-        <Description/>
-        <Works pathname='/brows.jpg'
-         heading='Перманентный татуаж бровей'
-         description='Перманентный татуаж бровей' />
+        <Header />
+        <Description />
+        <Works pathname='/brows.jpg' id="brows"
+          heading='Перманентный татуаж бровей'
+          description={BROWS_DESCRIPTION} />
+        <Works pathname='/brows.jpg' id="lips"
+          heading='Татуаж губ'
+          description={BROWS_DESCRIPTION} />
+        <Works pathname='/brows.jpg' id="eyelashes"
+          heading='Татуаж ресниц'
+          description={BROWS_DESCRIPTION} />
       </main>
+      <Footer />
     </>
   )
 }

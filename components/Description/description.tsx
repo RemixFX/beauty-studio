@@ -7,7 +7,8 @@ export default function Description() {
       <blockquote className={styles.quote}>&#34;Каждая девушка достойна...
         <span className={styles.quote__parth}> ...быть красивой&#34;</span>
       </blockquote>
-      <p className={styles.about}>узнайте больше:</p>
+      <div className={styles.photo}></div>
+      <p className={styles.about}>что мы можем сделать для Вас:</p>
       <ul className={styles.description}>
         <li className={styles.service}>
           <a href='#brows' className={styles.link}>Перманентный татуаж бровей</a>
