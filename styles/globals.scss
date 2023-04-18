@@ -1,6 +1,8 @@
 :root {
   --max-width: 414px;
   --yellow: #f3cb38;
+  --black: #19181e;
+  --margin10: 10px;
   --brows: #aeffa5;
   --lips: #ffa5a5;
   --eyelashes: #a5c0ff;
@@ -23,7 +25,7 @@ body {
 
 body {
   color: #fff;
-  background: #19181e;
+  background: var(--black);
   font-size: 1rem;
   line-height: 1.4;
 }

@@ -1,6 +1,5 @@
 .container {
   border: 1px solid;
-  margin-top: 40px;
 }
 
 .brows .lips .eyelashes {
@@ -19,6 +18,7 @@
 }
 
 .description {
+  background: var(--black);
   border-top: 1px solid #fff;
   padding: 10px;
 }
