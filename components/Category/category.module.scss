@@ -1,14 +1,4 @@
 
-
-@keyframes show {
-  
-  100% { transform: translateY(0); opacity: 1; height: auto;}
-}
-
-@keyframes hide {
-  100% { transform: translateY(-100%); opacity: 0; height: 0;}
-}
-
 .button {
   color: inherit;
   padding: 5px 10px 15px;
@@ -25,17 +15,4 @@
 .content {
   position: relative;
   z-index: -1;
-}
-
-.open {
-  height: 0;
-  position: relative;
-  z-index: -1;
-  opacity: 0;
-  transform: translateY(-100%);
-  animation: show 800ms forwards cubic-bezier(0, 0, 0.1, 0.96);
-}
-
-.close {
-  animation: hide 800ms forwards cubic-bezier(0.91, 0.02, 1, 1);
 }
