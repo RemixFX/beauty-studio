@@ -24,27 +24,125 @@ export default function Home() {
         <Description />
         <Card pathname='/brows.jpg' id="brows"
           heading='Перманентный татуаж бровей'
-          description={BROWS_DESCRIPTION}>
-          <Category>
+          description={BROWS_DESCRIPTION}
+          category={'card'}>
+          <Category heading='Пудровое напыление'>
             <Card pathname='/brows.jpg'
               heading='Пудровое напыление'
               description={BROWS_DESCRIPTION}
-              category={true}>
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Шантирование'>
+            <Card pathname='/brows.jpg'
+              heading='Шантирование'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Растушевка'>
+            <Card pathname='/brows.jpg'
+              heading='Растушевка'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
             </Card>
           </Category>
         </Card>
         <Card pathname='/lips.png' id="lips"
           heading='Татуаж губ'
-          description={BROWS_DESCRIPTION} />
+          description={BROWS_DESCRIPTION}
+          category={'card'}>
+          <Category heading='Акварельный прокрас'>
+            <Card pathname='/lips.png'
+              heading='Акварельный прокрас'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Помадный эффект'>
+            <Card pathname='/lips.png'
+              heading='Помадный эффект'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='3D'>
+            <Card pathname='/lips.png'
+              heading='3D'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Нют'>
+            <Card pathname='/lips.png'
+              heading='Нют'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+        </Card>
         <Card pathname='/eyelashes.jpg' id="eyelashes"
           heading='Татуаж век'
-          description={BROWS_DESCRIPTION} />
+          description={BROWS_DESCRIPTION}
+          category={'card'}>
+          <Category heading='Стрелка с растушёвкой'>
+            <Card pathname='/eyelashes.jpg'
+              heading='Стрелка с растушёвкой'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Стрелка классическая'>
+            <Card pathname='/eyelashes.jpg'
+              heading='Стрелка классическая'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Стрелка классическая'>
+            <Card pathname='/eyelashes.jpg'
+              heading='Стрелка классическая'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Стрелка мягкая(карандашная)'>
+            <Card pathname='/eyelashes.jpg'
+              heading='Стрелка мягкая(карандашная)'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Межресничный татуаж'>
+            <Card pathname='/eyelashes.jpg'
+              heading='Межресничный татуаж'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Нижнее веко'>
+            <Card pathname='/eyelashes.jpg'
+              heading='Нижнее веко'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+          <Category heading='Цветной'>
+            <Card pathname='/eyelashes.jpg'
+              heading='Цветной'
+              description={BROWS_DESCRIPTION}
+              category={'inCard'}>
+            </Card>
+          </Category>
+        </Card>
         <Card pathname='/correction.jpg' id="correction"
           heading='Коррекция татуажа'
-          description={BROWS_DESCRIPTION} />
+          description={BROWS_DESCRIPTION}
+          category={'singleCard'} />
         <Card pathname='/overlap.jpg' id="overlap"
           heading='Перекрытие татуажа'
-          description={BROWS_DESCRIPTION} />
+          description={BROWS_DESCRIPTION} 
+          category={'singleCard'} />
       </main>
       <Footer />
     </>
