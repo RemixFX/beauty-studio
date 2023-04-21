@@ -1,0 +1,23 @@
+.offer {
+  border: 2px dashed var(--yellow);
+  margin: 6px;
+}
+
+.price, .execution, .link {
+  padding: 6px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 5px;
+}
+
+.link {
+  width: 47%;
+  padding: 3px;
+  min-height: 40px;
+  font-size: 0.9rem;
+  background: var(--yellow);
+  border: 1px solid black;
+}

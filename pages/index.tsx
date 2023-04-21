@@ -7,6 +7,7 @@ import Card from '@/components/Card/card'
 import { BROWS_DESCRIPTION } from '@/config/const.js'
 import Footer from '@/components/Footer/footer'
 import Category from '@/components/Category/category'
+import Offer from '@/components/Offer/offer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,6 +32,7 @@ export default function Home() {
               heading='Пудровое напыление'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Шантирование'>
@@ -38,6 +40,7 @@ export default function Home() {
               heading='Шантирование'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Растушевка'>
@@ -45,6 +48,7 @@ export default function Home() {
               heading='Растушевка'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
         </Card>
@@ -57,6 +61,7 @@ export default function Home() {
               heading='Акварельный прокрас'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Помадный эффект'>
@@ -64,6 +69,7 @@ export default function Home() {
               heading='Помадный эффект'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='3D'>
@@ -71,6 +77,7 @@ export default function Home() {
               heading='3D'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Нют'>
@@ -78,6 +85,7 @@ export default function Home() {
               heading='Нют'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
         </Card>
@@ -90,6 +98,7 @@ export default function Home() {
               heading='Стрелка с растушёвкой'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Стрелка классическая'>
@@ -97,6 +106,7 @@ export default function Home() {
               heading='Стрелка классическая'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Стрелка классическая'>
@@ -104,6 +114,7 @@ export default function Home() {
               heading='Стрелка классическая'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Стрелка мягкая(карандашная)'>
@@ -111,6 +122,7 @@ export default function Home() {
               heading='Стрелка мягкая(карандашная)'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Межресничный татуаж'>
@@ -118,6 +130,7 @@ export default function Home() {
               heading='Межресничный татуаж'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Нижнее веко'>
@@ -125,6 +138,7 @@ export default function Home() {
               heading='Нижнее веко'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
           <Category heading='Цветной'>
@@ -132,17 +146,22 @@ export default function Home() {
               heading='Цветной'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
+              <Offer />
             </Card>
           </Category>
         </Card>
         <Card pathname='/correction.jpg' id="correction"
           heading='Коррекция татуажа'
           description={BROWS_DESCRIPTION}
-          category={'singleCard'} />
+          category={'singleCard'}>
+          <Offer />
+        </Card>
         <Card pathname='/overlap.jpg' id="overlap"
           heading='Перекрытие татуажа'
-          description={BROWS_DESCRIPTION} 
-          category={'singleCard'} />
+          description={BROWS_DESCRIPTION}
+          category={'singleCard'}>
+          <Offer />
+        </Card>
       </main>
       <Footer />
     </>
