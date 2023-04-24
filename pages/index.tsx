@@ -109,14 +109,6 @@ export default function Home() {
               <Offer />
             </Card>
           </Category>
-          <Category heading='Стрелка классическая'>
-            <Card pathname='/eyelashes.jpg'
-              heading='Стрелка классическая'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
           <Category heading='Стрелка мягкая(карандашная)'>
             <Card pathname='/eyelashes.jpg'
               heading='Стрелка мягкая(карандашная)'

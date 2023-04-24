@@ -1,0 +1,58 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+  margin-top: 40px;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+.images {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+
+.layout {
+  position: relative;
+}
+
+.image {
+  border: 2px solid #979797;
+
+  &_zoom {
+    position: fixed;
+    top: 11%;
+    width: 100%;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+.arrows {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 43px;
+  z-index: 1;
+
+  &_left {
+    left: 9px;
+    background: url('../../public/previous_arrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &_right {
+    left: calc(100% - 52px);
+    background: url('../../public/next_arrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+

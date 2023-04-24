@@ -15,14 +15,15 @@ export default function Category({ heading, children }: CategoryProps) {
   const api = useSpringRef() 
   const springs = useSpring({
     ref: api,
-    from: { height: 0, opacity: 0 }
+    from: { height: 0, opacity: 0, zIndex: -1 }
   })
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     api.start({
       to: {
         opacity: springs.opacity.get() === 1 ? 0 : 1,
-        height: springs.height.get() === viewHeight ? 0 : viewHeight
+        height: springs.height.get() === viewHeight ? 0 : viewHeight,
+        zIndex: springs.zIndex.get() ===  -1 ? 1 : -1
       },
       config: { duration: 430 }
     })

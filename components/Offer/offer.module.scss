@@ -14,10 +14,13 @@
 }
 
 .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 47%;
   padding: 3px;
   min-height: 40px;
   font-size: 0.9rem;
+  color: #000;
   background: var(--yellow);
-  border: 1px solid black;
 }
