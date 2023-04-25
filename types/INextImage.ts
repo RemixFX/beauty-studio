@@ -4,4 +4,5 @@ export default interface INextImage {
   width: number;
   alt: string;
   id: number;
+  priority?: boolean;
 }

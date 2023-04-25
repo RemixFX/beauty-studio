@@ -2,7 +2,7 @@ import styles from './library.module.scss'
 import Image from 'next/image'
 import { MouseEvent, useRef, useState } from 'react'
 import useMeasure from 'react-use-measure';
-import INextImage from '@/models/INextImage';
+import INextImage from '@/types/INextImage';
 
 export default function Library({data, header}: {data: INextImage[], header: string}) {
 
@@ -55,6 +55,7 @@ export default function Library({data, header}: {data: INextImage[], header: str
               width={img.width}
               className={styles.image}
               ref={ref}
+              priority={img.priority}
               onClick={e => zoomImage(e)}
             />
           )}

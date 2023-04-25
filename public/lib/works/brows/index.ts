@@ -1,4 +1,4 @@
-import INextImage from "@/models/INextImage"
+import INextImage from "@/types/INextImage"
 
  const BROWS: INextImage[] = [
   {
