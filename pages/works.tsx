@@ -17,8 +17,8 @@ export default function Works () {
     <Header/>
     <h1 className={styles.header}>Работы мастера</h1>
     <Library data={BROWS} header={'Татуаж бровей'}/>
-    <Library data={LIPS} header={'Татуаж губ'}/>
-    <Library data={EYELASHES} header={'Татуаж век'}/>
+    <Library data={LIPS} header={'Татуаж губ'} id='lips'/>
+    <Library data={EYELASHES} header={'Татуаж век'} id='eye'/>
     <Footer/>
     </>
   )

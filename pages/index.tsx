@@ -85,7 +85,7 @@ export default function Home() {
               heading='Нют'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
-              <Offer />
+              <Offer id='lips'/>
             </Card>
           </Category>
         </Card>
@@ -138,7 +138,7 @@ export default function Home() {
               heading='Цветной'
               description={BROWS_DESCRIPTION}
               category={'inCard'}>
-              <Offer />
+              <Offer id='eye'/>
             </Card>
           </Category>
         </Card>

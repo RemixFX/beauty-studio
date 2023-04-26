@@ -1,34 +1,47 @@
 import styles from './library.module.scss'
 import Image from 'next/image'
-import { MouseEvent, useRef, useState } from 'react'
+import { MouseEvent, useEffect, useRef, useState } from 'react'
 import useMeasure from 'react-use-measure';
 import INextImage from '@/types/INextImage';
 
-export default function Library({data, header}: {data: INextImage[], header: string}) {
+export default function Library({data, header, id}: {data: INextImage[], header: string, id?: string}) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
-  const [ref, { width }] = useMeasure()
-  const [length, setLength] = useState(0)
+  const [ref, {width}] = useMeasure()
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const element = scrollElement.current;
+    function handleScroll() {
+      setScrollPosition(element!.scrollLeft);
+    }
+    element && element.addEventListener('scroll', handleScroll);
+    return () => {
+      element && element.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const clickPrevious = () => {
-    if (length === 0) return
-    if (scrollElement.current)
+    if (scrollPosition === 0) return
+    if (scrollElement.current) {
+      const roundPosition = Math.round(scrollPosition / width) * width
       scrollElement.current.scrollTo({
-        left: length - width,
+        left: scrollPosition === roundPosition ? roundPosition - width : roundPosition,
         behavior: "smooth"
       })
-    setLength(length - width)
+    }
   }
-
+  
   const clickNext = () => {
     const maxWidth = width * (data.length - 1)
-    if (length === maxWidth) return
-    if (scrollElement.current)
+    if (scrollPosition === maxWidth) return
+    if (scrollElement.current) {
+      const roundPosition = Math.round(scrollPosition / width) * width
       scrollElement.current.scrollTo({
-        left: length + width,
+        left: scrollPosition === roundPosition ? roundPosition + width : roundPosition,
         behavior: "smooth"
       })
-    setLength(length + width)
+    }
   }
 
   const zoomImage = (e: MouseEvent<HTMLImageElement>) => {
@@ -39,7 +52,7 @@ export default function Library({data, header}: {data: INextImage[], header: str
   }
 
   return (
-    <article className={styles.content}>
+    <article className={styles.content} id={id}>
       <h2 className={styles.header}>{header}</h2>
       <div className={styles.layout} >
         <span className={`${styles.arrows} ${styles.arrows_left}`}
@@ -53,9 +66,8 @@ export default function Library({data, header}: {data: INextImage[], header: str
               key={img.id}
               height={img.height}
               width={img.width}
-              className={styles.image}
+              className={styles.image}             
               ref={ref}
-              priority={img.priority}
               onClick={e => zoomImage(e)}
             />
           )}

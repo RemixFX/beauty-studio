@@ -6,8 +6,7 @@ import INextImage from "@/types/INextImage"
     height: 380,
     width: 380,
     alt: 'татуаж век',
-    id: 1,
-    priority: true
+    id: 1
   },
   {
     src: '/lib/works/eyelashes/images/eyelashes_2.jpg',

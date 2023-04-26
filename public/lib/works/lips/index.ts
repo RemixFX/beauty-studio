@@ -6,8 +6,7 @@ import INextImage from "@/types/INextImage"
     height: 380,
     width: 380,
     alt: 'татуаж губ',
-    id: 1,
-    priority: true
+    id: 1
   },
   {
     src: '/lib/works/lips/images/lips_2.jpg',
