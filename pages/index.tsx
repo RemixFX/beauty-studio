@@ -9,8 +9,6 @@ import Footer from '@/components/Footer/footer'
 import Category from '@/components/Category/category'
 import Offer from '@/components/Offer/offer'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
   return (
     <>
