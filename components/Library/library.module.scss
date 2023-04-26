@@ -22,14 +22,6 @@
 
 .image {
   border: 2px solid #979797;
-
-  &_zoom {
-    position: fixed;
-    top: 11%;
-    width: 100%;
-    left: 0;
-    z-index: 1;
-  }
 }
 
 .arrows {
@@ -55,4 +47,6 @@
     background-position: center;
   }
 }
+
+
 

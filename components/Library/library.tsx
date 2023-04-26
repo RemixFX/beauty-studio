@@ -4,10 +4,17 @@ import { MouseEvent, useEffect, useRef, useState } from 'react'
 import useMeasure from 'react-use-measure';
 import INextImage from '@/types/INextImage';
 
-export default function Library({data, header, id}: {data: INextImage[], header: string, id?: string}) {
+type LibraryProps = {
+  data: INextImage[];
+  header: string;
+  id?: string;
+  setFullScreen: (e: MouseEvent<HTMLImageElement>) => void;
+}
+
+export default function Library({ data, header, setFullScreen }: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
-  const [ref, {width}] = useMeasure()
+  const [ref, { width }] = useMeasure()
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -31,7 +38,7 @@ export default function Library({data, header, id}: {data: INextImage[], header:
       })
     }
   }
-  
+
   const clickNext = () => {
     const maxWidth = width * (data.length - 1)
     if (scrollPosition === maxWidth) return
@@ -44,15 +51,8 @@ export default function Library({data, header, id}: {data: INextImage[], header:
     }
   }
 
-  const zoomImage = (e: MouseEvent<HTMLImageElement>) => {
-    if (e.currentTarget.classList.contains(styles.image_zoom)) {
-      e.currentTarget.classList.remove(styles.image_zoom)
-    }
-    else e.currentTarget.classList.add(styles.image_zoom)
-  }
-
   return (
-    <article className={styles.content} id={id}>
+    <article className={styles.content}>
       <h2 className={styles.header}>{header}</h2>
       <div className={styles.layout} >
         <span className={`${styles.arrows} ${styles.arrows_left}`}
@@ -66,9 +66,9 @@ export default function Library({data, header, id}: {data: INextImage[], header:
               key={img.id}
               height={img.height}
               width={img.width}
-              className={styles.image}             
+              className={styles.image}
               ref={ref}
-              onClick={e => zoomImage(e)}
+              onClick={(e) => setFullScreen(e)}
             />
           )}
         </div>
