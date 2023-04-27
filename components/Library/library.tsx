@@ -1,6 +1,6 @@
 import styles from './library.module.scss'
 import Image from 'next/image'
-import { MouseEvent, useEffect, useRef, useState } from 'react'
+import { MouseEvent, useEffect, useMemo, useRef, useState } from 'react'
 import useMeasure from 'react-use-measure';
 import INextImage from '@/types/INextImage';
 
@@ -14,9 +14,17 @@ type LibraryProps = {
 export default function Library({ data, header, setFullScreen }: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
-  const [ref, { width }] = useMeasure({offsetSize: true})
+  const [ref, { width }] = useMeasure({ offsetSize: true })
   const [scrollPosition, setScrollPosition] = useState<number>(0)
   const roundPosition = Math.round(scrollPosition / width) * width;
+
+  const disableLeftButton = useMemo(() => {
+    if (roundPosition === 0) return true
+  }, [roundPosition])
+
+  const disableRightButton = useMemo(() => {
+    if (roundPosition === width * (data.length - 1)) return true
+  }, [data.length, roundPosition, width])
 
   useEffect(() => {
     const element = scrollElement.current;
@@ -36,32 +44,27 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
         left: Math.round(scrollPosition) === roundPosition ? -width : roundPosition - scrollPosition,
         behavior: "smooth"
       })
-      
     }
   }
 
   const clickNext = () => {
     const maxWidth = width * (data.length - 1)
     if (scrollPosition === maxWidth) return
-    if (scrollElement.current) {     
+    if (scrollElement.current) {
       scrollElement.current.scrollBy({
         left: Math.round(scrollPosition) === roundPosition ? width : roundPosition - scrollPosition,
         behavior: "smooth",
       })
-      
     }
   }
 
   return (
     <article className={styles.content}>
       <h2 className={styles.header}>{header}</h2>
-      <span>scrollPosition: {scrollPosition}</span>
-      <span>roundPosition: {roundPosition}</span>
-      <span>width: {width}</span>
       <div className={styles.layout} >
-        <span className={`${styles.arrows} ${styles.arrows_left}`}
+        <span className={`${styles.arrows} ${styles.arrows_left} ${disableLeftButton && styles.arrows_disabled}`}
           onClick={clickPrevious}></span>
-        <span className={`${styles.arrows} ${styles.arrows_right}`}
+        <span className={`${styles.arrows} ${styles.arrows_right} ${disableRightButton && styles.arrows_disabled}`}
           onClick={clickNext}></span>
         <div className={styles.images} ref={scrollElement}>
           {data.map((img) =>

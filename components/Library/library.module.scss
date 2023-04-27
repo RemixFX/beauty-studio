@@ -22,7 +22,6 @@
 
 .image {
   border: 2px solid #979797;
-  box-sizing: content-box;
 }
 
 .arrows {
@@ -46,6 +45,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  &_disabled {
+    display: none;
   }
 }
 
