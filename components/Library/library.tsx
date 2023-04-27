@@ -16,7 +16,7 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
   const scrollElement = useRef<HTMLDivElement>(null)
   const [ref, { width }] = useMeasure()
   const imageWidth = Math.floor(width)
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const [scrollPosition, setScrollPosition] = useState<number>(0)
   const roundPosition = Math.round(scrollPosition / imageWidth) * imageWidth;
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
       <h2 className={styles.header}>{header}</h2>
       <span>scrollPosition: {scrollPosition}</span>
       <span>roundPosition: {roundPosition}</span>
-      <span>imageWidth: {width}</span>
+      <span>imageWidth: {imageWidth}</span>
       <span>width: {width}</span>
       <div className={styles.layout} >
         <span className={`${styles.arrows} ${styles.arrows_left}`}
