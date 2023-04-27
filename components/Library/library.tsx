@@ -14,7 +14,7 @@ type LibraryProps = {
 export default function Library({ data, header, setFullScreen }: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
-  const [ref, { width }] = useMeasure({offsetSize: true})
+  const [ref, { width }] = useMeasure()
   //const imageWidth = Math.floor(width)
   const [scrollPosition, setScrollPosition] = useState<number>(0)
   const roundPosition = Math.round(scrollPosition / width) * width;
@@ -37,7 +37,7 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
         left: scrollPosition === roundPosition ? -width : roundPosition - scrollPosition,
         behavior: "smooth"
       })
-      setScrollPosition((state) => Math.round(state))
+      //setScrollPosition((state) => Math.round(state))
     }
   }
 
@@ -49,7 +49,7 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
         left: scrollPosition === roundPosition ? width : roundPosition - scrollPosition,
         behavior: "smooth",
       })
-      setScrollPosition((state) => Math.round(state))
+      //setScrollPosition((state) => Math.round(state))
     }
   }
 
@@ -58,7 +58,6 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
       <h2 className={styles.header}>{header}</h2>
       <span>scrollPosition: {scrollPosition}</span>
       <span>roundPosition: {roundPosition}</span>
-      <span>imageWidth: {width}</span>
       <span>width: {width}</span>
       <div className={styles.layout} >
         <span className={`${styles.arrows} ${styles.arrows_left}`}
