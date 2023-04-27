@@ -31,7 +31,6 @@ export default function Works() {
     <>
       <Head>
         <title>Работы мастера</title>
-        <meta name="viewport" content="width=device-width; initial-scale=1"/>
       </Head>
       <Header />
       <h1 className={styles.header}>Работы мастера</h1>

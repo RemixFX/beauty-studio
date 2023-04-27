@@ -37,6 +37,7 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
         left: scrollPosition === roundPosition ? -width : roundPosition - scrollPosition,
         behavior: "smooth"
       })
+      setScrollPosition((state) => Math.round(state))
     }
   }
 
@@ -48,6 +49,7 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
         left: scrollPosition === roundPosition ? width : roundPosition - scrollPosition,
         behavior: "smooth",
       })
+      setScrollPosition((state) => Math.round(state))
     }
   }
 
