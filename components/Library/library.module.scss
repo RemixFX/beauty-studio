@@ -13,7 +13,7 @@
 .images {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .layout {
@@ -22,7 +22,6 @@
 
 .image {
   border: 2px solid #979797;
-  transform: translateZ(0);
 }
 
 .arrows {
