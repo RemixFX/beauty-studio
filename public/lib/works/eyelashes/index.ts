@@ -114,35 +114,35 @@ import INextImage from "@/types/INextImage"
     id: 16
   },
   {
-    src: '/lib/works/eyelashes/images/eyelashes_16.jpg',
+    src: '/lib/works/eyelashes/images/eyelashes_17.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж век',
     id: 17
   },
   {
-    src: '/lib/works/eyelashes/images/eyelashes_16.jpg',
+    src: '/lib/works/eyelashes/images/eyelashes_18.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж век',
     id: 18
   },
   {
-    src: '/lib/works/eyelashes/images/eyelashes_16.jpg',
+    src: '/lib/works/eyelashes/images/eyelashes_19.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж век',
     id: 19
   },
   {
-    src: '/lib/works/eyelashes/images/eyelashes_16.jpg',
+    src: '/lib/works/eyelashes/images/eyelashes_20.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж век',
     id: 20
   },
   {
-    src: '/lib/works/eyelashes/images/eyelashes_16.jpg',
+    src: '/lib/works/eyelashes/images/eyelashes_21.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж век',

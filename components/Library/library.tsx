@@ -15,7 +15,8 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
   const [ref, { width }] = useMeasure()
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0)
+  const roundPosition = Math.round(scrollPosition / width) * width;
 
   useEffect(() => {
     const element = scrollElement.current;
@@ -31,22 +32,21 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
   const clickPrevious = () => {
     if (scrollPosition === 0) return
     if (scrollElement.current) {
-      const roundPosition = Math.round(scrollPosition / width) * width
       scrollElement.current.scrollTo({
         left: scrollPosition === roundPosition ? roundPosition - width : roundPosition,
         behavior: "smooth"
       })
     }
   }
-
+  
+  console.log(scrollPosition, roundPosition)
   const clickNext = () => {
     const maxWidth = width * (data.length - 1)
     if (scrollPosition === maxWidth) return
-    if (scrollElement.current) {
-      const roundPosition = Math.round(scrollPosition / width) * width
+    if (scrollElement.current) {     
       scrollElement.current.scrollTo({
         left: scrollPosition === roundPosition ? roundPosition + width : roundPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       })
     }
   }
@@ -54,6 +54,10 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
   return (
     <article className={styles.content}>
       <h2 className={styles.header}>{header}</h2>
+      <span>scrollPosition: {scrollPosition}</span>
+      <span>roundPosition: {roundPosition}</span>
+      <span>width: {width}</span>
+      <span>dataLength: {data.length}</span>
       <div className={styles.layout} >
         <span className={`${styles.arrows} ${styles.arrows_left}`}
           onClick={clickPrevious}></span>

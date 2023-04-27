@@ -114,28 +114,28 @@ import INextImage from "@/types/INextImage"
     id: 16
   },
   {
-    src: '/lib/works/lips/images/lips_16.jpg',
+    src: '/lib/works/lips/images/lips_17.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж губ',
     id: 17
   },
   {
-    src: '/lib/works/lips/images/lips_16.jpg',
+    src: '/lib/works/lips/images/lips_18.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж губ',
     id: 18
   },
   {
-    src: '/lib/works/lips/images/lips_16.jpg',
+    src: '/lib/works/lips/images/lips_19.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж губ',
     id: 19
   },
   {
-    src: '/lib/works/lips/images/lips_16.jpg',
+    src: '/lib/works/lips/images/lips_20.jpg',
     height: 380,
     width: 380,
     alt: 'татуаж губ',
