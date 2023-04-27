@@ -14,10 +14,10 @@ type LibraryProps = {
 export default function Library({ data, header, setFullScreen }: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
-  const [ref, { width }] = useMeasure()
-  const imageWidth = Math.floor(width)
+  const [ref, { width }] = useMeasure({offsetSize: true})
+  //const imageWidth = Math.floor(width)
   const [scrollPosition, setScrollPosition] = useState<number>(0)
-  const roundPosition = Math.round(scrollPosition / imageWidth) * imageWidth;
+  const roundPosition = Math.round(scrollPosition / width) * width;
 
   useEffect(() => {
     const element = scrollElement.current;
@@ -34,18 +34,18 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
     if (scrollPosition === 0) return
     if (scrollElement.current) {
       scrollElement.current.scrollBy({
-        left: scrollPosition === roundPosition ? -imageWidth : roundPosition - scrollPosition,
+        left: scrollPosition === roundPosition ? -width : roundPosition - scrollPosition,
         behavior: "smooth"
       })
     }
   }
 
   const clickNext = () => {
-    const maxWidth = imageWidth * (data.length - 1)
+    const maxWidth = width * (data.length - 1)
     if (scrollPosition === maxWidth) return
     if (scrollElement.current) {     
       scrollElement.current.scrollBy({
-        left: scrollPosition === roundPosition ? imageWidth : roundPosition - scrollPosition,
+        left: scrollPosition === roundPosition ? width : roundPosition - scrollPosition,
         behavior: "smooth",
       })
     }
@@ -56,7 +56,7 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
       <h2 className={styles.header}>{header}</h2>
       <span>scrollPosition: {scrollPosition}</span>
       <span>roundPosition: {roundPosition}</span>
-      <span>imageWidth: {imageWidth}</span>
+      <span>imageWidth: {width}</span>
       <span>width: {width}</span>
       <div className={styles.layout} >
         <span className={`${styles.arrows} ${styles.arrows_left}`}
