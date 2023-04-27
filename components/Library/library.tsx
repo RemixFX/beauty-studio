@@ -15,7 +15,6 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
   const [ref, { width }] = useMeasure({offsetSize: true})
-  //const imageWidth = Math.floor(width)
   const [scrollPosition, setScrollPosition] = useState<number>(0)
   const roundPosition = Math.round(scrollPosition / width) * width;
 
@@ -33,7 +32,6 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
   const clickPrevious = () => {
     if (scrollPosition === 0) return
     if (scrollElement.current) {
-      //setScrollPosition(Math.round(scrollPosition))
       scrollElement.current.scrollBy({
         left: Math.round(scrollPosition) === roundPosition ? -width : roundPosition - scrollPosition,
         behavior: "smooth"
@@ -45,8 +43,7 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
   const clickNext = () => {
     const maxWidth = width * (data.length - 1)
     if (scrollPosition === maxWidth) return
-    if (scrollElement.current) {  
-      //setScrollPosition(Math.round(scrollPosition))   
+    if (scrollElement.current) {     
       scrollElement.current.scrollBy({
         left: Math.round(scrollPosition) === roundPosition ? width : roundPosition - scrollPosition,
         behavior: "smooth",
