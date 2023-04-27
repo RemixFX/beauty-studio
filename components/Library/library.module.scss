@@ -39,12 +39,20 @@
     background-position: center;
   }
 
+  &_left:active {
+    transform: translateX(-5px);
+  }
+
   &_right {
     left: calc(100% - 52px);
     background: url('../../public/next_arrow.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  &_right:active {
+    transform: translateX(5px);
   }
 
   &_disabled {
