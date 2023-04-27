@@ -33,8 +33,8 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
   const clickPrevious = () => {
     if (scrollPosition === 0) return
     if (scrollElement.current) {
-      scrollElement.current.scrollTo({
-        left: scrollPosition === roundPosition ? roundPosition - imageWidth : roundPosition,
+      scrollElement.current.scrollBy({
+        left: scrollPosition === roundPosition ? -imageWidth : roundPosition - scrollPosition,
         behavior: "smooth"
       })
     }
@@ -44,8 +44,8 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
     const maxWidth = imageWidth * (data.length - 1)
     if (scrollPosition === maxWidth) return
     if (scrollElement.current) {     
-      scrollElement.current.scrollTo({
-        left: scrollPosition === roundPosition ? roundPosition + imageWidth : roundPosition,
+      scrollElement.current.scrollBy({
+        left: scrollPosition === roundPosition ? imageWidth : roundPosition - scrollPosition,
         behavior: "smooth",
       })
     }
@@ -56,8 +56,8 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
       <h2 className={styles.header}>{header}</h2>
       <span>scrollPosition: {scrollPosition}</span>
       <span>roundPosition: {roundPosition}</span>
+      <span>imageWidth: {width}</span>
       <span>width: {width}</span>
-      <span>dataLength: {data.length}</span>
       <div className={styles.layout} >
         <span className={`${styles.arrows} ${styles.arrows_left}`}
           onClick={clickPrevious}></span>
