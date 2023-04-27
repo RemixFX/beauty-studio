@@ -33,23 +33,25 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
   const clickPrevious = () => {
     if (scrollPosition === 0) return
     if (scrollElement.current) {
+      setScrollPosition(Math.round(scrollPosition))
       scrollElement.current.scrollBy({
         left: scrollPosition === roundPosition ? -width : roundPosition - scrollPosition,
         behavior: "smooth"
       })
-      //setScrollPosition((state) => Math.round(state))
+      
     }
   }
 
   const clickNext = () => {
     const maxWidth = width * (data.length - 1)
     if (scrollPosition === maxWidth) return
-    if (scrollElement.current) {     
+    if (scrollElement.current) {  
+      setScrollPosition(Math.round(scrollPosition))   
       scrollElement.current.scrollBy({
         left: scrollPosition === roundPosition ? width : roundPosition - scrollPosition,
         behavior: "smooth",
       })
-      //setScrollPosition((state) => Math.round(state))
+      
     }
   }
 
