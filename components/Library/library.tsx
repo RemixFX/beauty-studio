@@ -15,8 +15,9 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
   const [ref, { width }] = useMeasure()
+  const imageWidth = Math.floor(width)
   const [scrollPosition, setScrollPosition] = useState(0)
-  const roundPosition = Math.round(scrollPosition / width) * width;
+  const roundPosition = Math.round(scrollPosition / imageWidth) * imageWidth;
 
   useEffect(() => {
     const element = scrollElement.current;
@@ -33,19 +34,18 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
     if (scrollPosition === 0) return
     if (scrollElement.current) {
       scrollElement.current.scrollTo({
-        left: scrollPosition === roundPosition ? roundPosition - width : roundPosition,
+        left: scrollPosition === roundPosition ? roundPosition - imageWidth : roundPosition,
         behavior: "smooth"
       })
     }
   }
-  
-  console.log(scrollPosition, roundPosition)
+
   const clickNext = () => {
-    const maxWidth = width * (data.length - 1)
+    const maxWidth = imageWidth * (data.length - 1)
     if (scrollPosition === maxWidth) return
     if (scrollElement.current) {     
       scrollElement.current.scrollTo({
-        left: scrollPosition === roundPosition ? roundPosition + width : roundPosition,
+        left: scrollPosition === roundPosition ? roundPosition + imageWidth : roundPosition,
         behavior: "smooth",
       })
     }
