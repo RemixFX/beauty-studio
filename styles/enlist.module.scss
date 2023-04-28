@@ -1,0 +1,77 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  padding: 1rem;
+  position: relative;
+  min-height: 100vh;
+
+  &::before {
+    content: "";
+    display: block;
+    background: #4e3601;
+    width: 79%;
+    height: 34%;
+    filter: blur(56px);
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 2%;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    background: #010e4e;
+    width: 79%;
+    height: 34%;
+    filter: blur(56px);
+    position: absolute;
+    z-index: -1;
+    top: 60%;
+    left: 20%;
+  }
+}
+
+.header {
+  margin-top: 5px;
+  align-self: flex-start;
+}
+
+.description {
+  align-self: flex-start;
+  margin-top: 30px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.button {
+  margin-top: 20px;
+  width: 80%;
+  padding: 12px;
+  color: #000;
+  font-size: 1.2rem;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: inset 2px 3px 7px 1px #000000d6;
+
+
+  &_calendar {
+    background: linear-gradient(to bottom right, #7e3b9b, rgb(231 173 255));
+  }
+
+  &_whatsapp {
+    background: linear-gradient(to bottom right, #2c8126, #c3fdbf);
+  }
+
+  &_telegram {
+    background: linear-gradient(to bottom right, #14a8ff, #a2dcff);
+  }
+
+  &_phone {
+    background: linear-gradient(to bottom right, #384d87, #bfd0ff);
+  }
+}
