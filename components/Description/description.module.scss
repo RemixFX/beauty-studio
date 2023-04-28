@@ -11,8 +11,8 @@
 .section {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
   padding-top: 67px;
-  height: calc(100vh - 44px);
 }
 
 .title {
@@ -29,23 +29,11 @@
   &__parth {
     text-align: end;
   }
-
-  ::after {
-    content: "";
-    display: block;
-    background: #4e3601;
-    width: 100%;
-    height: 200%;
-    filter: blur(56px);
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-  }
 }
 
 .photo {
   background-image: url('../../public/circle2.svg');
+  min-height: 236px;
   height: 100%;
   background-position: center;
   background-size: contain;
@@ -59,20 +47,6 @@
 .description {
   list-style: none;
   position: relative;
-
-  &::after {
-    content: "";
-    display: block;
-    background: #010e4e;
-    width: 100%;
-    height: 100%;
-    filter: blur(56px);
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-  }
-
 }
 
 .service {

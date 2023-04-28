@@ -1,5 +1,32 @@
 .container {
-    max-width: 36rem;
-    padding: 0 1rem;
-    margin: 3rem auto 6rem;
+  @media screen and (max-height: 685px) {
+    min-height: 100vh;
   }
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    background: #4e3601;
+    width: 75%;
+    height: 29%;
+    filter: blur(56px);
+    position: absolute;
+    z-index: -1;
+    top: 12%;
+    left: 2%;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    background: #010e4e;
+    width: 79%;
+    height: 34%;
+    filter: blur(56px);
+    position: absolute;
+    z-index: -1;
+    top: 60%;
+    left: 20%;
+  }
+}
