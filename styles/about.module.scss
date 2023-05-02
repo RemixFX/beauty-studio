@@ -1,0 +1,31 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header {
+  margin-top: 67px;
+  margin-bottom: 5px;
+  align-self: start;
+  font-size: 1.8rem;
+}
+
+.description {
+  margin-top: 15px;
+}
+
+.link {
+  margin: 35px auto 5px;
+  color: var(--yellow);
+  font-size: 1.2rem;
+  position: relative;
+
+  &::before {
+    content: "➥";
+    position: absolute;
+    left: -1.5rem;
+    top: 0;
+  }
+}

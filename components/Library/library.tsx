@@ -1,6 +1,6 @@
 import styles from './library.module.scss'
 import Image from 'next/image'
-import { MouseEvent, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import useMeasure from 'react-use-measure';
 import INextImage from '@/types/INextImage';
 
@@ -8,10 +8,9 @@ type LibraryProps = {
   data: INextImage[];
   header: string;
   id?: string;
-  setFullScreen: (e: MouseEvent<HTMLImageElement>) => void;
 }
 
-export default function Library({ data, header, setFullScreen }: LibraryProps) {
+export default function Library({ data, header}: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
   const [ref, { width }] = useMeasure({ offsetSize: true })
@@ -75,7 +74,6 @@ export default function Library({ data, header, setFullScreen }: LibraryProps) {
               width={img.width}
               className={styles.image}
               ref={ref}
-              onClick={(e) => setFullScreen(e)}
             />
           )}
         </div>
