@@ -1,0 +1,42 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  top: 25%;
+  left: 3%;
+  width: inherit;
+  height: inherit;
+  background: transparent;
+  border: none;
+  z-index: 3;
+}
+
+.element {
+  background: var(--yellow);
+  height: 3px;
+  border-radius: 2px;
+  width: 100%;
+
+  &_open:nth-of-type(1) {
+    transform: rotate3d(0, 0, 1, 45deg);
+    top: 4px;
+    position: relative;
+    transition: top 200ms, transform 400ms 300ms;
+    width: 85%;
+  }
+
+  &_open:nth-of-type(2) {
+    visibility: hidden;
+  }
+
+  &_open:nth-of-type(3) {
+    transform: rotate3d(0, 0, 1, -45deg);
+    top: -13px;
+    position: relative;
+    transition: top 200ms, transform 400ms 300ms;
+    width: 85%;
+  }
+
+}

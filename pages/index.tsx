@@ -1,14 +1,14 @@
 import Head from 'next/head'
+import styles from '@/styles/Home.module.scss'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/home.module.scss'
 import Header from '@/components/Header/header'
 import Description from '@/components/Description/description'
 import Card from '@/components/Card/card'
-import { BROWS_DESCRIPTION } from '@/config/const.js'
 import Footer from '@/components/Footer/footer'
 import Category from '@/components/Category/category'
 import Offer from '@/components/Offer/offer'
 import Layout from '@/components/Layout/layout'
+import { BROWS_DESCRIPTION } from '@/config/const.js'
 
 export default function Home() {
   return (
