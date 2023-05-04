@@ -3,14 +3,12 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  position: absolute;
-  top: 25%;
-  left: 3%;
+  position: relative;
+  z-index: 1;
   width: inherit;
   height: inherit;
   background: transparent;
   border: none;
-  z-index: 3;
 }
 
 .element {

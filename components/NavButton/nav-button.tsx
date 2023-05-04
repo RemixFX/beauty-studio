@@ -1,19 +1,17 @@
-import { useState } from 'react'
 import styles from './nav-button.module.scss'
-import { useSpring, animated } from '@react-spring/web'
 
+type NavProps = {
+  isOpen: boolean;
+  handleToggle: () => void;
+}
 
-export default function NavButton () {
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const spring = useSpring({ left: isOpen ? '89%' : '3%'} )
+export default function NavButton ({handleToggle, isOpen}: NavProps) {
 
   return (
-    <animated.button style={spring} className={styles.button} onClick={() => setIsOpen(!isOpen)}>
+    <button className={styles.button} onClick={handleToggle}>
       <span className={`${styles.element} ${isOpen ? styles.element_open : ''}`}></span>
       <span className={`${styles.element} ${isOpen ? styles.element_open : ''}`}></span>
       <span className={`${styles.element} ${isOpen ? styles.element_open : ''}`}></span>
-    </animated.button>
+    </button>
   )
-} 
+}
