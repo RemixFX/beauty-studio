@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import styles from './description.module.scss'
+import logo from '@/public/lib/logo/logo_type2.png'
 
 export default function Description() {
   return (
@@ -7,7 +9,7 @@ export default function Description() {
       <blockquote className={styles.quote}>&#34;Каждая девушка достойна...
         <span className={styles.quote__parth}> ...быть красивой&#34;</span>
       </blockquote>
-      <div className={styles.photo}></div>
+        <Image src={logo} alt="студия перманентного татуажа" className={styles.logo}/>
       <p className={styles.about}>что мы можем сделать для Вас:</p>
       <ul className={styles.description}>
         <li className={styles.service}>
