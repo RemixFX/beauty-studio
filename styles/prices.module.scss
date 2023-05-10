@@ -1,0 +1,39 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.header {
+  margin-top: 25px;
+  margin-bottom: 5px;
+  align-self: start;
+  font-size: 1.8rem;
+}
+
+.title {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.list {
+  margin-top: 24px;
+}
+
+.element {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.name {
+  margin-right: 30px;
+}
+
+.time {
+  margin-left: 8px;
+}

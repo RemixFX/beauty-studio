@@ -9,7 +9,7 @@ export const LINKS = [
   },
   {
     name: 'Цены',
-    src: '/about'
+    src: '/prices'
   },
   {
     name: 'Записаться',
