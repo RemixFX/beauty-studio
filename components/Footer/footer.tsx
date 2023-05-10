@@ -2,7 +2,7 @@ import styles from './footer.module.scss'
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} id='footer'>
       <div className={styles.container}>
         <h3 className={styles.heading}>Адрес салона:</h3>
         <p className={styles.adress}>

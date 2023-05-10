@@ -5,9 +5,12 @@ import styles from './nav-list.module.scss'
 import logo from '@/public/lib/logo/logo_type1.png'
 import { LINKS } from '@/config/NavPanel.config'
 
+type NavProps = {
+  isOpen: boolean;
+  handleToggle: () => void;
+}
 
-
-export default function NavList({ isOpen }: { isOpen: boolean }) {
+export default function NavList ({handleToggle, isOpen}: NavProps) {
 
   const trail = useTrail(LINKS.length,
     {
@@ -17,12 +20,18 @@ export default function NavList({ isOpen }: { isOpen: boolean }) {
     },
   )
 
+  const handleClick = (nameLink: string) => {
+    if (nameLink === 'Контакты') {
+      handleToggle()
+    }
+  }
+
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
         {trail.map((style, index) => (
           <animated.li className={styles.element} style={style} key={index}>
-            <Link href={LINKS[index].src}>{LINKS[index].name}</Link>
+            <Link href={LINKS[index].src} onClick={() => handleClick(LINKS[index].name)}>{LINKS[index].name}</Link>
           </animated.li>
         ))}
       </ul>

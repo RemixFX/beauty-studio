@@ -21,7 +21,7 @@ export const LINKS = [
   },
   {
     name: 'Консультация',
-    src: '/about'
+    src: '/enlist'
   },
   {
     name: 'Обучение',
@@ -29,6 +29,6 @@ export const LINKS = [
   },
   {
     name: 'Контакты',
-    src: '/about'
+    src: '#footer'
   },
 ]

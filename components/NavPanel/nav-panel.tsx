@@ -26,7 +26,7 @@ export default function NavPanel() {
       />
       </animated.div>
       <animated.div className={styles.list} style={listStyleProps}>
-        <NavList isOpen={isOpen}/>
+        <NavList isOpen={isOpen} handleToggle={handleToggle }/>
       </animated.div>
       
       
