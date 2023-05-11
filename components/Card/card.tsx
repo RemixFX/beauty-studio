@@ -1,25 +1,21 @@
 import styles from './card.module.scss'
 import Image from 'next/image'
 import { ReactNode } from 'react';
+import { IService } from '@/types/IServices';
 
-type CardProps = {
-  id?: string;
-  pathname: string;
-  heading: string;
-  description: string;
+interface CardProps extends IService {
   children?: ReactNode;
-  category: 'inCard' | 'card' | 'singleCard';
 }
 
-export default function Card ({id, pathname, heading, description, children, category}: CardProps) {
+export default function Card ({id, pathname, heading, description, children, type}: CardProps) {
   return(
-    <article className={styles.container} id={id} style={{marginTop: category === 'inCard' ? '0' : '40px'}}>
+    <article className={styles.container} id={id} style={{marginTop: type === 'inCard' ? '0' : '40px'}}>
       <figure className={styles.figure}>
         <Image width={380} height={380} src={pathname} alt={heading}/>
         <figcaption className={styles.heading}>{heading}</figcaption>
       </figure>
       <p className={styles.description}>{description}</p>
-      {category === 'card' && 
+      {type === 'card' && 
         <p className={styles.enum}>{heading} имеет следующие разновидности:</p>
       }
       {children}

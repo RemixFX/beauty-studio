@@ -8,7 +8,7 @@ import Footer from '@/components/Footer/footer'
 import Category from '@/components/Category/category'
 import Offer from '@/components/Offer/offer'
 import Layout from '@/components/Layout/layout'
-import { BROWS_DESCRIPTION } from '@/config/const.js'
+import servicesData from '@/config/servicesData'
 
 export default function Home() {
   return (
@@ -24,137 +24,42 @@ export default function Home() {
         <Description />
       </Layout>
       <main className={styles.main}>
-        <Card pathname='/brows.jpg' id="brows"
-          heading='Перманентный татуаж бровей'
-          description={BROWS_DESCRIPTION}
-          category={'card'}>
-          <Category heading='Пудровое напыление'>
-            <Card pathname='/brows.jpg'
-              heading='Пудровое напыление'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Шантирование'>
-            <Card pathname='/brows.jpg'
-              heading='Шантирование'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Растушевка'>
-            <Card pathname='/brows.jpg'
-              heading='Растушевка'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-        </Card>
-        <Card pathname='/lips.png' id="lips"
-          heading='Татуаж губ'
-          description={BROWS_DESCRIPTION}
-          category={'card'}>
-          <Category heading='Акварельный прокрас'>
-            <Card pathname='/lips.png'
-              heading='Акварельный прокрас'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Помадный эффект'>
-            <Card pathname='/lips.png'
-              heading='Помадный эффект'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='3D'>
-            <Card pathname='/lips.png'
-              heading='3D'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Нют'>
-            <Card pathname='/lips.png'
-              heading='Нют'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer id='lips' />
-            </Card>
-          </Category>
-        </Card>
-        <Card pathname='/eyelashes.jpg' id="eyelashes"
-          heading='Татуаж век'
-          description={BROWS_DESCRIPTION}
-          category={'card'}>
-          <Category heading='Стрелка с растушёвкой'>
-            <Card pathname='/eyelashes.jpg'
-              heading='Стрелка с растушёвкой'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Стрелка классическая'>
-            <Card pathname='/eyelashes.jpg'
-              heading='Стрелка классическая'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Стрелка мягкая(карандашная)'>
-            <Card pathname='/eyelashes.jpg'
-              heading='Стрелка мягкая(карандашная)'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Межресничный татуаж'>
-            <Card pathname='/eyelashes.jpg'
-              heading='Межресничный татуаж'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Нижнее веко'>
-            <Card pathname='/eyelashes.jpg'
-              heading='Нижнее веко'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer />
-            </Card>
-          </Category>
-          <Category heading='Цветной'>
-            <Card pathname='/eyelashes.jpg'
-              heading='Цветной'
-              description={BROWS_DESCRIPTION}
-              category={'inCard'}>
-              <Offer id='eye' />
-            </Card>
-          </Category>
-        </Card>
-        <Card pathname='/correction.jpg' id="correction"
-          heading='Коррекция татуажа'
-          description={BROWS_DESCRIPTION}
-          category={'singleCard'}>
-          <Offer />
-        </Card>
-        <Card pathname='/overlap.jpg' id="overlap"
-          heading='Перекрытие татуажа'
-          description={BROWS_DESCRIPTION}
-          category={'singleCard'}>
-          <Offer />
-        </Card>
+        {servicesData.map((service, index) =>
+          <Card
+            key={index}
+            pathname={service.pathname}
+            id={service.id}
+            heading={service.heading}
+            description={service.description}
+            type={service.type}
+          >
+            {service.categories ?
+              service.categories.map((category, index) =>
+                <Category key={index} heading={category.heading}>
+                  <Card
+                    pathname={category.pathname}
+                    id={category.id}
+                    heading={category.heading}
+                    description={category.description}
+                    type={category.type}
+                  >
+                    <Offer
+                      id={category.id}
+                      price={category.price}
+                      time={category.time}
+                    />
+                  </Card>
+                </Category>
+              )
+              :
+              <Offer
+                id={service.id}
+                price={service.price} 
+                time={service.time}
+                />
+            }
+          </Card>
+        )}
       </main>
       <Footer />
     </>

@@ -10,7 +10,7 @@ type LibraryProps = {
   id?: string;
 }
 
-export default function Library({ data, header}: LibraryProps) {
+export default function Library({ data, header, id}: LibraryProps) {
 
   const scrollElement = useRef<HTMLDivElement>(null)
   const [ref, { width }] = useMeasure({ offsetSize: true })
@@ -58,7 +58,7 @@ export default function Library({ data, header}: LibraryProps) {
   }
 
   return (
-    <article className={styles.content}>
+    <article className={styles.content} id={id}>
       <h2 className={styles.header}>{header}</h2>
       <div className={styles.layout} >
         <span className={`${styles.arrows} ${styles.arrows_left} ${disableLeftButton && styles.arrows_disabled}`}
