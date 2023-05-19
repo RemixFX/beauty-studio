@@ -19,7 +19,7 @@ export default function Offer({id, price, time}: OfferProps) {
         <Link href='/enlist'  className={styles.link}>Записаться</Link>
         <Link href={{
           pathname: '/works',
-          hash: id
+          hash: '#' + id
         }} scroll={false} className={styles.link}>Посмотреть работы мастера</Link>
       </div>
     </>

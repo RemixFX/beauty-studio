@@ -19,6 +19,17 @@
   border: 1px solid var(--border-beige);
   border-radius: 14px;
   width: 80%;
+  position: relative;
+
+  &::after {
+    content: attr(content);
+    position: absolute;
+    top: 0;
+    right: -30px;
+    font-size: 1.7rem;
+    line-height: 1.9rem;
+    color: var(--border-beige);
+  }
 }
 
 .link {

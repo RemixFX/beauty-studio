@@ -1,7 +1,7 @@
 export const LINKS = [
   {
     name: 'Услуги',
-    src: '/'
+    src: '/#services'
   },
   {
     name: 'О мастере',

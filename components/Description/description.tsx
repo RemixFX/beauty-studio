@@ -4,7 +4,7 @@ import logo from '@/public/lib/logo/logo_type2.png'
 
 export default function Description() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} id='services'>
       <h1 className={styles.title}>Студия татуажа<br />Илоны Измайловой</h1>
       <blockquote className={styles.quote}>&#34;Каждая девушка достойна...
         <span className={styles.quote__parth}> ...быть красивой&#34;</span>

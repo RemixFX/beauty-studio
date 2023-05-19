@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import { useTrail, animated } from '@react-spring/web'
 import styles from './nav-list.module.scss'
 import logo from '@/public/lib/logo/logo_type1.png'
@@ -10,8 +11,9 @@ type NavProps = {
   handleToggle: () => void;
 }
 
-export default function NavList ({handleToggle, isOpen}: NavProps) {
+export default function NavList({ handleToggle, isOpen }: NavProps) {
 
+  const pathname = usePathname()
   const trail = useTrail(LINKS.length,
     {
       from: { x: -300 },
@@ -20,24 +22,24 @@ export default function NavList ({handleToggle, isOpen}: NavProps) {
     },
   )
 
-  const handleClick = (nameLink: string) => {
-    if (nameLink === 'Контакты') {
-      handleToggle()
-    }
-  }
-
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
-        {trail.map((style, index) => (
-          <animated.li className={styles.element} style={style} key={index}>
-            <Link className={styles.link} href={LINKS[index].src} 
-            onClick={() => handleClick(LINKS[index].name)}>{LINKS[index].name}</Link>
-          </animated.li>
-        ))}
+        {trail.map((style, index) => {
+          const link = LINKS[index]
+          const isActive = pathname.startsWith(link.src) || (pathname === '/' && link.src === '/#services')
+          console.log(pathname, link.src)
+          return (
+            <animated.li className={styles.element} style={style} key={index}
+            content={isActive ?'●' : ''} >
+              <Link className={styles.link} href={link.src}
+                onClick={handleToggle}>{link.name}</Link>
+            </animated.li>
+          )
+        })}
       </ul>
       <Image src={logo} alt={'студия татуажа Илоны Измайловой'}
-       className={`${styles.image} ${isOpen ? styles.image_open : ''}`} />
+        className={`${styles.image} ${isOpen ? styles.image_open : ''}`} />
     </div>
   )
 }
