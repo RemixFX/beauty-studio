@@ -15,13 +15,15 @@
 
 .element {
   margin: 12px 0;
-  background: #c39b7b78;
-  border: 2px solid #c39b7b;
+  background: var(--bg-darkblue);
+  border: 1px solid var(--border-beige);
   border-radius: 14px;
-  padding: 4px;
-  padding-left: 10px;
   width: 80%;
-  box-shadow: inset 0 0 3px 1px black;
+}
+
+.link {
+  display: block;
+  padding: 4px 10px;
 }
 
 .image {

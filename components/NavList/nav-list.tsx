@@ -16,7 +16,7 @@ export default function NavList ({handleToggle, isOpen}: NavProps) {
     {
       from: { x: -300 },
       x: isOpen ? 0 : -300,
-      config: { mass: 5, tension: 2000, friction: 160 },
+      config: { mass: 5, tension: 2000, friction: 160, clamp: true },
     },
   )
 
@@ -31,7 +31,8 @@ export default function NavList ({handleToggle, isOpen}: NavProps) {
       <ul className={styles.list}>
         {trail.map((style, index) => (
           <animated.li className={styles.element} style={style} key={index}>
-            <Link href={LINKS[index].src} onClick={() => handleClick(LINKS[index].name)}>{LINKS[index].name}</Link>
+            <Link className={styles.link} href={LINKS[index].src} 
+            onClick={() => handleClick(LINKS[index].name)}>{LINKS[index].name}</Link>
           </animated.li>
         ))}
       </ul>
