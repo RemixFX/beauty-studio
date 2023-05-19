@@ -1,5 +1,9 @@
 export const LINKS = [
   {
+    name: 'Услуги',
+    src: '/'
+  },
+  {
     name: 'О мастере',
     src: '/about'
   },
@@ -18,10 +22,6 @@ export const LINKS = [
   {
     name: 'Отзывы',
     src: '/about'
-  },
-  {
-    name: 'Консультация',
-    src: '/enlist'
   },
   {
     name: 'Обучение',
