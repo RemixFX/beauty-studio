@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.scss'
-import { Inter } from 'next/font/google'
 import Header from '@/components/Header/header'
 import Description from '@/components/Description/description'
 import Card from '@/components/Card/card'

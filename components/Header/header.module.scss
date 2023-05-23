@@ -20,12 +20,15 @@
   padding: 3px;
   background: transparent;
   border: 1px solid var(--yellow);
-  font-size: inherit;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
   color: inherit;
   text-align: center;
+  font-family: var(--text-font);
 }
 
 .link {
   width: 100%;
   text-align: center;
+  font-size: 1.2rem;
 }

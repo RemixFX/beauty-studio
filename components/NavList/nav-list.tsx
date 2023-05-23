@@ -28,10 +28,9 @@ export default function NavList({ handleToggle, isOpen }: NavProps) {
         {trail.map((style, index) => {
           const link = LINKS[index]
           const isActive = pathname.startsWith(link.src) || (pathname === '/' && link.src === '/#services')
-          console.log(pathname, link.src)
           return (
             <animated.li className={styles.element} style={style} key={index}
-            content={isActive ?'●' : ''} >
+              content={isActive ? '●' : ''} >
               <Link className={styles.link} href={link.src}
                 onClick={handleToggle}>{link.name}</Link>
             </animated.li>

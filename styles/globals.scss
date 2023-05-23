@@ -18,12 +18,12 @@ html,
 body {
   min-width: 320px;
   max-width: var(--max-width);
+  font-size: 16px;
 }
 
 body {
   color: #fff;
   background: var(--black);
-  font-size: 1rem;
   line-height: 1.4;
 }
 
@@ -42,3 +42,6 @@ img {
   display: block;
 }
 
+p {
+  font-family: var(--text-font);
+}
