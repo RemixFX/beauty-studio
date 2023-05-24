@@ -28,7 +28,7 @@ export default function About() {
         <p className={styles.description}>Люблю консультировать. 
         Для меня важно, что бы Вы остались довольны работой, поэтому буду поддерживать с Вами связь и после процедуры.</p>
         <Library data={WORKING_MASTER} header={''} />
-        <Link href={'#'} className={styles.link}>Посмотреть отзывы</Link>
+        <Link href={'/reviews'} className={styles.link}>Посмотреть отзывы</Link>
       </section>
       </Layout>
       <Footer/>

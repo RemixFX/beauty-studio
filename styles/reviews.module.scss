@@ -1,0 +1,27 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: start;
+  font-size: 1.8rem;
+}
+
+.description {
+  margin-top: 15px;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  
+}
+
+.image {
+  padding: 1rem 0;
+}

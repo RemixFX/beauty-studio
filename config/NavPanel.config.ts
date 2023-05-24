@@ -21,7 +21,7 @@ export const LINKS = [
   },
   {
     name: 'Отзывы',
-    src: '/about'
+    src: '/reviews'
   },
   {
     name: 'Обучение',

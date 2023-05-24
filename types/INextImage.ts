@@ -1,5 +1,3 @@
-import { RectReadOnly } from "react-use-measure";
-
 export default interface INextImage {
   src: string;
   height: number;
