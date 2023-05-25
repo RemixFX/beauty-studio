@@ -17,10 +17,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 47%;
   padding: 3px;
   min-height: 40px;
+  font-family: var(--text-font);
   font-size: 0.9rem;
+  border-radius: 5px;
   color: #000;
   background: var(--yellow);
+  box-shadow: inset 0 0 3px 1px var(--black);
 }
