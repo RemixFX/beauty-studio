@@ -25,3 +25,19 @@
 .image {
   padding: 1rem 0;
 }
+
+@keyframes change {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}

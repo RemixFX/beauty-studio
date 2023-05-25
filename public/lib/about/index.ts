@@ -8,6 +8,13 @@ import INextImage from "@/types/INextImage"
     alt: 'татуаж бровей',
     id: 1
   },
+  {
+    src: '/lib/about/images/working_master_2.jpeg',
+    height: 380,
+    width: 380,
+    alt: 'татуаж бровей',
+    id: 2
+  },
 ]
 
 export default WORKING_MASTER
