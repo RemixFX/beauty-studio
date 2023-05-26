@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
       <Header />
       <Layout>
-        <Description />
+        <Description/>
       </Layout>
       <main className={styles.main}>
         {servicesData.map((service, index) =>
