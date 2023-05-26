@@ -1,32 +1,23 @@
 import { IService } from "@/types/IServices";
-import { BROWS_DESCRIPTION } from "./servicesDescription";
+import { BROWS_POWDER, BROWS_SHADING, EYELASHES_ARROW_CLASSIC, EYELASHES_ARROW_SHADING, EYELASHES_ARROW_SOFT, EYELASHES_COLOR, EYELASHES_INTERCILIARY, EYELASHES_LOWER_EYELID, LIPS_LIPSTICK, LIPS_NUDE, LIPS_THREED, LIPS_WATERCOLOR } from "./servicesDescription";
 
 export const BROWS_CATEGORIES: IService[] = [
   {
     id: "brows",
-    pathname: '/brows.jpg',
+    pathname: '/lib/categories/brows/brows_powder.jpeg',
     heading: 'Пудровое напыление',
-    description: BROWS_DESCRIPTION,
+    description: BROWS_POWDER,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
   {
     id: "brows",
-    pathname: '/brows.jpg',
-    heading: 'Шантирование',
-    description: BROWS_DESCRIPTION,
-    type: 'inCard',
-    price: 3000,
-    time: '~1.5ч'
-  },
-  {
-    id: "brows",
-    pathname: '/brows.jpg',
+    pathname: '/lib/categories/brows/brows_shading.jpeg',
     heading: 'Растушевка',
-    description: BROWS_DESCRIPTION,
+    description: BROWS_SHADING,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
 ]
@@ -34,38 +25,38 @@ export const BROWS_CATEGORIES: IService[] = [
 export const LIPS_CATEGORIES: IService[] = [
   {
     id: "lips",
-    pathname: '/lips.png',
+    pathname: '/lib/categories/lips/lips_watercolor.jpeg',
     heading: 'Акварельный прокрас',
-    description: BROWS_DESCRIPTION,
+    description: LIPS_WATERCOLOR,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
   {
     id: "lips",
-    pathname: '/lips.png',
+    pathname: '/lib/categories/lips/lips_lipstick.jpeg',
     heading: 'Помадный эффект',
-    description: BROWS_DESCRIPTION,
+    description: LIPS_LIPSTICK,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
   {
     id: "lips",
     pathname: '/lips.png',
     heading: '3D',
-    description: BROWS_DESCRIPTION,
+    description: LIPS_THREED,
     type: 'inCard',
-    price: 3000,
-    time: '~1.5ч'
+    price: 7000,
+    time: '~2ч'
   },
   {
     id: "lips",
-    pathname: '/lips.png',
-    heading: 'Нют',
-    description: BROWS_DESCRIPTION,
+    pathname: '/lib/categories/lips/lips_nude.jpeg',
+    heading: 'Натуральный',
+    description: LIPS_NUDE,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
 ]
@@ -73,56 +64,56 @@ export const LIPS_CATEGORIES: IService[] = [
 export const EYELASHES_CATEGORIES: IService[] = [
   {
     id: "eyelashes",
-    pathname: '/eyelashes.jpg',
+    pathname: '/lib/categories/eyelashes/eyelashes_shading.jpeg',
     heading: 'Стрелка с растушёвкой',
-    description: BROWS_DESCRIPTION,
+    description: EYELASHES_ARROW_SHADING,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
   {
     id: "eyelashes",
-    pathname: '/eyelashes.jpg',
+    pathname: '/lib/categories/eyelashes/eyelashes_classic.jpeg',
     heading: 'Стрелка классическая',
-    description: BROWS_DESCRIPTION,
+    description: EYELASHES_ARROW_CLASSIC,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
   {
     id: "eyelashes",
     pathname: '/eyelashes.jpg',
     heading: 'Стрелка мягкая(карандашная)',
-    description: BROWS_DESCRIPTION,
+    description: EYELASHES_ARROW_SOFT,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
   {
     id: "eyelashes",
-    pathname: '/eyelashes.jpg',
+    pathname: '/lib/categories/eyelashes/eyelashes_interciliary.jpeg',
     heading: 'Межресничный татуаж',
-    description: BROWS_DESCRIPTION,
+    description: EYELASHES_INTERCILIARY,
     type: 'inCard',
-    price: 3000,
+    price: 4500,
     time: '~1.5ч'
   },
   {
     id: "eyelashes",
     pathname: '/eyelashes.jpg',
     heading: 'Нижнее веко',
-    description: BROWS_DESCRIPTION,
+    description: EYELASHES_LOWER_EYELID,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
   {
     id: "eyelashes",
     pathname: '/eyelashes.jpg',
     heading: 'Цветной',
-    description: BROWS_DESCRIPTION,
+    description: EYELASHES_COLOR,
     type: 'inCard',
-    price: 3000,
+    price: 6000,
     time: '~1.5ч'
   },
 ]

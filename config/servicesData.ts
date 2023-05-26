@@ -1,6 +1,6 @@
 import { IService } from "@/types/IServices"
 import { BROWS_CATEGORIES, EYELASHES_CATEGORIES, LIPS_CATEGORIES } from "./categoriesOfServices"
-import { BROWS_DESCRIPTION } from "./servicesDescription"
+import { BROWS_DESCRIPTION, CORRECTION, EYELASHES_DESCRIPTION, LIPS_DESCRIPTION, OVERLAP } from "./servicesDescription"
 
 
 const servicesData: IService[] = [
@@ -16,7 +16,7 @@ const servicesData: IService[] = [
     id: "lips",
     pathname: '/lips.png',
     heading: 'Перманентный макияж губ',
-    description: BROWS_DESCRIPTION,
+    description: LIPS_DESCRIPTION,
     type: 'card',
     categories: LIPS_CATEGORIES
   },
@@ -24,7 +24,7 @@ const servicesData: IService[] = [
     id: "eyelashes",
     pathname: '/eyelashes.jpg',
     heading: 'Перманентный макияж век',
-    description: BROWS_DESCRIPTION,
+    description: EYELASHES_DESCRIPTION,
     type: 'card',
     categories: EYELASHES_CATEGORIES
   },
@@ -32,18 +32,18 @@ const servicesData: IService[] = [
     id: "correction",
     pathname: '/correction.jpg',
     heading: 'Коррекция татуажа',
-    description: BROWS_DESCRIPTION,
+    description: CORRECTION,
     type: 'singleCard',
-    price: 3000,
-    time: '~ 1.5ч'
+    price: 4000,
+    time: '~ 40м'
   },
   {
     id: "overlap",
     pathname: '/overlap.jpg',
     heading: 'Перекрытие татуажа',
-    description: BROWS_DESCRIPTION,
+    description: OVERLAP,
     type: 'singleCard',
-    price: 3000,
+    price: 6000,
     time: '~ 1.5ч'
   },
 ]
