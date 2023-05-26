@@ -6,7 +6,7 @@ import { BROWS_DESCRIPTION, CORRECTION, EYELASHES_DESCRIPTION, LIPS_DESCRIPTION,
 const servicesData: IService[] = [
   {
     id: "brows",
-    pathname: '/brows.jpg',
+    pathname: '/lib/categories/brows/brows.jpg',
     heading: 'Перманентный макияж бровей',
     description: BROWS_DESCRIPTION,
     type: 'card',
@@ -14,7 +14,7 @@ const servicesData: IService[] = [
   },
   {
     id: "lips",
-    pathname: '/lips.png',
+    pathname: '/lib/categories/lips/lips.png',
     heading: 'Перманентный макияж губ',
     description: LIPS_DESCRIPTION,
     type: 'card',
@@ -22,7 +22,7 @@ const servicesData: IService[] = [
   },
   {
     id: "eyelashes",
-    pathname: '/eyelashes.jpg',
+    pathname: '/lib/categories/eyelashes/eyelashes.jpg',
     heading: 'Перманентный макияж век',
     description: EYELASHES_DESCRIPTION,
     type: 'card',
@@ -30,7 +30,7 @@ const servicesData: IService[] = [
   },
   {
     id: "correction",
-    pathname: '/correction.jpg',
+    pathname: '/lib/categories/correction/correction.jpg',
     heading: 'Коррекция татуажа',
     description: CORRECTION,
     type: 'singleCard',
@@ -39,7 +39,7 @@ const servicesData: IService[] = [
   },
   {
     id: "overlap",
-    pathname: '/overlap.jpg',
+    pathname: '/lib/categories/overlap/overlap.jpg',
     heading: 'Перекрытие татуажа',
     description: OVERLAP,
     type: 'singleCard',
