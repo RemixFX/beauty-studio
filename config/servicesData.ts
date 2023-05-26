@@ -35,7 +35,7 @@ const servicesData: IService[] = [
     description: CORRECTION,
     type: 'singleCard',
     price: 4000,
-    time: '~ 40м'
+    time: '~ 1ч'
   },
   {
     id: "overlap",

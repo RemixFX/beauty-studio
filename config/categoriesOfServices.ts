@@ -43,7 +43,7 @@ export const LIPS_CATEGORIES: IService[] = [
   },
   {
     id: "lips",
-    pathname: '/lips.png',
+    pathname: '/lib/categories/lips/lips_threed.jpeg',
     heading: '3D',
     description: LIPS_THREED,
     type: 'inCard',
@@ -82,7 +82,7 @@ export const EYELASHES_CATEGORIES: IService[] = [
   },
   {
     id: "eyelashes",
-    pathname: '/eyelashes.jpg',
+    pathname: '/lib/categories/eyelashes/eyelashes_soft.jpeg',
     heading: 'Стрелка мягкая(карандашная)',
     description: EYELASHES_ARROW_SOFT,
     type: 'inCard',
@@ -100,20 +100,20 @@ export const EYELASHES_CATEGORIES: IService[] = [
   },
   {
     id: "eyelashes",
-    pathname: '/eyelashes.jpg',
+    pathname: '/lib/categories/eyelashes/eyelashes_lower.jpeg',
     heading: 'Нижнее веко',
     description: EYELASHES_LOWER_EYELID,
     type: 'inCard',
-    price: 6000,
-    time: '~1.5ч'
+    price: 2000,
+    time: '~1ч'
   },
   {
     id: "eyelashes",
-    pathname: '/eyelashes.jpg',
+    pathname: '/lib/categories/eyelashes/eyelashes_color.jpeg',
     heading: 'Цветной',
     description: EYELASHES_COLOR,
     type: 'inCard',
     price: 6000,
-    time: '~1.5ч'
+    time: '~2ч'
   },
 ]
