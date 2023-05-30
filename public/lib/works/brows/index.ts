@@ -65,13 +65,6 @@ import INextImage from "@/types/INextImage"
     id: 9
   },
   {
-    src: '/lib/works/brows/images/brows_10.jpg',
-    height: 380,
-    width: 380,
-    alt: 'татуаж бровей',
-    id: 10
-  },
-  {
     src: '/lib/works/brows/images/brows_11.jpg',
     height: 380,
     width: 380,
@@ -114,5 +107,7 @@ import INextImage from "@/types/INextImage"
     id: 16
   }
 ]
+
+//deleted: 10
 
 export default BROWS

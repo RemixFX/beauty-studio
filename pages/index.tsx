@@ -22,7 +22,7 @@ export default function Home() {
       <Layout>
         <Description/>
       </Layout>
-      <main className={styles.main}>
+      <section className={styles.main}>
         {servicesData.map((service, index) =>
           <Card
             key={index}
@@ -59,7 +59,7 @@ export default function Home() {
             }
           </Card>
         )}
-      </main>
+      </section>
       <Footer />
     </>
   )

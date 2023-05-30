@@ -9,13 +9,6 @@ import INextImage from "@/types/INextImage"
     id: 1
   },
   {
-    src: '/lib/works/eyelashes/images/eyelashes_2.jpg',
-    height: 380,
-    width: 380,
-    alt: 'татуаж век',
-    id: 2
-  },
-  {
     src: '/lib/works/eyelashes/images/eyelashes_3.jpg',
     height: 380,
     width: 380,
@@ -35,13 +28,6 @@ import INextImage from "@/types/INextImage"
     width: 380,
     alt: 'татуаж век',
     id: 5
-  },
-  {
-    src: '/lib/works/eyelashes/images/eyelashes_6.jpg',
-    height: 380,
-    width: 380,
-    alt: 'татуаж век',
-    id: 6
   },
   {
     src: '/lib/works/eyelashes/images/eyelashes_7.jpg',
@@ -114,13 +100,6 @@ import INextImage from "@/types/INextImage"
     id: 16
   },
   {
-    src: '/lib/works/eyelashes/images/eyelashes_17.jpg',
-    height: 380,
-    width: 380,
-    alt: 'татуаж век',
-    id: 17
-  },
-  {
     src: '/lib/works/eyelashes/images/eyelashes_18.jpg',
     height: 380,
     width: 380,
@@ -149,5 +128,7 @@ import INextImage from "@/types/INextImage"
     id: 21
   }
 ]
+
+//deleted: 2,6,17
 
 export default EYELASHES
