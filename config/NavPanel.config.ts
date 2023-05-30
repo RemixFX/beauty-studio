@@ -24,10 +24,6 @@ export const LINKS = [
     src: '/reviews'
   },
   {
-    name: 'Тест',
-    src: '/test'
-  },
-  {
     name: 'Контакты',
     src: '#footer'
   },
