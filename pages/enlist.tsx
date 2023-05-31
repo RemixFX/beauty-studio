@@ -17,7 +17,7 @@ export default function Enlist() {
         <section className={styles.content}>
           <h1 className={styles.header}>Запись</h1>
           <p className={styles.description}>есть несколько способов записаться:</p>
-          <Link href={'#'} className={`${styles.button} ${styles.button_calendar}`}>Онлайн</Link>
+          <Link href={'/calendar'} className={`${styles.button} ${styles.button_calendar}`}>Онлайн</Link>
           <a href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20записаться%20на%20процедуру"
             className={`${styles.button} ${styles.button_whatsapp}`}>Через Whatsapp</a>
           <a href="https://t.me/ilonkaizmaylova"
@@ -27,7 +27,7 @@ export default function Enlist() {
           <a href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20проконсультироваться"
             className={`${styles.button} ${styles.button_whatsapp}`}>Написать в Whatsapp</a>
           <p className={styles.description}>посмотреть доступные даты:</p>
-          <Link href={'#'} className={`${styles.button} ${styles.button_calendar}`}>В календаре</Link>
+          <Link href={'/calendar'} className={`${styles.button} ${styles.button_calendar}`}>В календаре</Link>
         </section>
       </Layout>
       <Footer />
