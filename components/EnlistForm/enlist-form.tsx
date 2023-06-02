@@ -1,7 +1,7 @@
 import styles from './enlist-form.module.scss'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import InputMask from '@mona-health/react-input-mask'
-import { ICategoriesOfServices, IServices, ServicesEnum } from '@/types/IServices'
+import { ServicesEnum } from '@/types/IServices'
 import { useEffect, useMemo } from 'react'
 import { servicesData } from '@/config/servicesData'
 
