@@ -1,9 +1,9 @@
 import styles from './card.module.scss'
 import Image from 'next/image'
 import { ReactNode } from 'react';
-import { IService } from '@/types/IServices';
+import { ICardService } from '@/types/ICardService';
 
-interface CardProps extends IService {
+interface CardProps extends ICardService {
   children?: ReactNode;
 }
 
