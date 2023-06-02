@@ -3,7 +3,7 @@ import Header from "@/components/Header/header";
 import Layout from "@/components/Layout/layout";
 import Head from "next/head";
 import styles from '@/styles/prices.module.scss'
-import servicesData from "@/config/servicesData";
+import servicesData from "@/config/cardDataServices";
 
 export default function Prices() {
   return (

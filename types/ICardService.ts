@@ -1,11 +1,14 @@
-export interface ICardService {
+import { ICategoriesOfServices } from "./IServices";
+
+ interface ICardCategories extends Omit<ICategoriesOfServices, 'name'> {
   id: string;
   pathname: string;
-  heading: string;
   description: string;
-  name: string;
   type: 'inCard' | 'card' | 'singleCard';
-  categories?: ICardService[];
   price?: number;
   time?: string;
+ }
+
+export interface ICardService extends ICardCategories {
+  categories?: ICardCategories[];
 }

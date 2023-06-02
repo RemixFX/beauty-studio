@@ -1,56 +1,84 @@
-import { ICardService } from "@/types/ICardService"
-import { BROWS_CATEGORIES, EYELASHES_CATEGORIES, LIPS_CATEGORIES } from "./categoriesOfServices"
-import { BROWS_DESCRIPTION, CORRECTION, EYELASHES_DESCRIPTION, LIPS_DESCRIPTION, OVERLAP } from "./servicesDescription"
+import { ICategoriesOfServices, IServices } from "@/types/IServices";
 
-
-const servicesData: ICardService[] = [
+const browsCategories: ICategoriesOfServices[] = [
   {
-    id: 'brows',
-    pathname: '/lib/categories/brows/brows.jpg',
-    heading: 'Перманентный макияж бровей',
-    description: BROWS_DESCRIPTION,
-    name: 'brows',
-    type: 'card',
-    categories: BROWS_CATEGORIES
+    name: 'brows_powder',
+    heading: 'Пудровое напыление',
   },
   {
-    id: 'lips',
-    pathname: '/lib/categories/lips/lips.png',
-    heading: 'Перманентный макияж губ',
-    description: LIPS_DESCRIPTION,
-    name: 'lips',
-    type: 'card',
-    categories: LIPS_CATEGORIES
-  },
-  {
-    id: 'eyelashes',
-    pathname: '/lib/categories/eyelashes/eyelashes.jpg',
-    heading: 'Перманентный макияж век',
-    description: EYELASHES_DESCRIPTION,
-    name: 'eyelashes',
-    type: 'card',
-    categories: EYELASHES_CATEGORIES
-  },
-  {
-    id: 'correction',
-    pathname: '/lib/categories/correction/correction.jpg',
-    heading: 'Коррекция татуажа',
-    description: CORRECTION,
-    name: 'correction',
-    type: 'singleCard',
-    price: 4000,
-    time: '~ 1ч'
-  },
-  {
-    id: 'overlap',
-    pathname: '/lib/categories/overlap/overlap.jpg',
-    heading: 'Перекрытие татуажа',
-    description: OVERLAP,
-    name: 'overlap',
-    type: 'singleCard',
-    price: 6000,
-    time: '~ 1.5ч'
+    name: 'brows_shading',
+    heading: 'Растушевка',
   },
 ]
 
-export default servicesData
+const lipsCategories: ICategoriesOfServices[] = [
+  {
+    name: 'lips-watercolor',
+    heading: 'Акварельный прокрас',
+  },
+  {
+    name: 'lips-lipstick',
+    heading: 'Помадный эффект',
+  },
+  {
+    name: 'lips-threed',
+    heading: '3D',
+  },
+  {
+    name: 'lips-nude',
+    heading: 'Натуральный',
+  },
+]
+
+const eyelashesCategories: ICategoriesOfServices[] = [
+  {
+    name: 'eyelashes-arrow-shading',
+    heading: 'Стрелка с растушёвкой',
+  },
+  {
+    name: 'eyelashes-arrow-classic',
+    heading: 'Стрелка классическая',
+  },
+  {
+    name: 'eyelashes-arrow-soft',
+    heading: 'Стрелка мягкая(карандашная)',
+  },
+  {
+    name: 'eyelashes-interciliary',
+    heading: 'Межресничный татуаж',
+  },
+  {
+    name: 'eyelashes-lower_eyelid',
+    heading: 'Нижнее веко',
+  },
+  {
+    name: 'eyelashes-color',
+    heading: 'Цветной',
+  },
+]
+
+export const servicesData: IServices[] = [
+  {
+    name: 'brows',
+    heading: 'Перманентный макияж бровей',
+    categories: browsCategories
+  },
+  {
+    name: 'lips',
+    heading: 'Перманентный макияж губ',
+    categories: lipsCategories
+  },
+  {
+    name: 'eyelashes',
+    heading: 'Перманентный макияж век',
+    categories: eyelashesCategories
+  },
+  {
+    name: 'correction',
+    heading: 'Коррекция татуажа',
+  },
+  {
+    name: 'overlap',
+    heading: 'Перекрытие татуажа',
+  },
+]

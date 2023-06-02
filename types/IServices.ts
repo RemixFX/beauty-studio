@@ -6,3 +6,12 @@ export enum ServicesEnum {
   overlap = 'overlap',
 }
 
+export interface ICategoriesOfServices {
+  heading: string;
+  name: string;
+}
+
+export interface IServices extends ICategoriesOfServices {
+  categories?: ICategoriesOfServices[];
+}
+

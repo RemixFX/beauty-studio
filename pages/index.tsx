@@ -7,7 +7,7 @@ import Footer from '@/components/Footer/footer'
 import Category from '@/components/Category/category'
 import Offer from '@/components/Offer/offer'
 import Layout from '@/components/Layout/layout'
-import servicesData from '@/config/servicesData'
+import cardDataServices from '@/config/cardDataServices'
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
         <Description/>
       </Layout>
       <section className={styles.main}>
-        {servicesData.map((service, index) =>
+        {cardDataServices.map((service, index) =>
           <Card
             key={index}
             pathname={service.pathname}

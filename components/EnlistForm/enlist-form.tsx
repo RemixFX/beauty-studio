@@ -1,9 +1,9 @@
 import styles from './enlist-form.module.scss'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import InputMask from '@mona-health/react-input-mask'
-import { ServicesEnum } from '@/types/IServices'
-import servicesData from '@/config/servicesData'
+import { ICategoriesOfServices, IServices, ServicesEnum } from '@/types/IServices'
 import { useEffect, useMemo } from 'react'
+import { servicesData } from '@/config/servicesData'
 
 type EnlistFormProps = {
   closeForm: () => void
@@ -49,7 +49,7 @@ export default function EnlistForm({ closeForm }: EnlistFormProps) {
         <label className={styles.field}>Услуга</label>
         <select className={`${styles.input} ${styles.select}`} {...register("service")}>
           {servicesData.map((service) =>
-            <option key={service.id} value={service.name}>- {service.heading}</option>
+            <option key={service.name} value={service.name}>- {service.heading}</option>
           )}
         </select>
         {category &&
