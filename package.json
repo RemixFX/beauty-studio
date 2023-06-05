@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mona-health/react-input-mask": "^3.0.0-alpha.10",
     "@react-spring/web": "^9.7.2",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",

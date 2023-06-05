@@ -1,5 +1,6 @@
 import styles from './enlist-form.module.scss'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+// @ts-ignore
 import InputMask from '@mona-health/react-input-mask'
 import { ServicesEnum } from '@/types/IServices'
 import { useEffect, useMemo } from 'react'
