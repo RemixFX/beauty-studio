@@ -5,24 +5,26 @@ import InputMask from '@mona-health/react-input-mask'
 import { ServicesEnum } from '@/types/IServices'
 import { useEffect, useMemo } from 'react'
 import { servicesData } from '@/config/servicesData'
+import { ParsedUrlQuery } from 'querystring'
 
 type EnlistFormProps = {
   closeForm: () => void
+  query: ParsedUrlQuery
   /* submitForm: (value: string) => void */
 }
 
 interface IFormInput {
-  service: ServicesEnum;
-  category: string;
+  service: ServicesEnum | ParsedUrlQuery[string];
+  category: string | ParsedUrlQuery[string];
   name: string;
   phone: string;
 }
 
-export default function EnlistForm({ closeForm }: EnlistFormProps) {
+export default function EnlistForm({ closeForm, query }: EnlistFormProps) {
 
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<IFormInput>({
     defaultValues: {
-      service: ServicesEnum.brows,
+      service: query.service ? query.service : ServicesEnum.brows,
       category: '',
       name: '',
       phone: '',
@@ -38,17 +40,19 @@ export default function EnlistForm({ closeForm }: EnlistFormProps) {
 
   useEffect(() => {
     if (category) {
-      setValue('category', category[0].name)
-    } else {
+      setValue('category', query.category ? query.category : category[0].name)
+    } else { 
       setValue('category', '')
     }
-  }, [category, setValue])
+  }, [category, query.category, setValue])
+
+  console.log(query)
 
   return (
     <div className={styles.modal}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <label className={styles.field}>Услуга</label>
-        <select className={`${styles.input} ${styles.select}`} {...register("service")}>
+        <select className={`${styles.input} ${styles.select}`} {...register('service')}>
           {servicesData.map((service) =>
             <option key={service.name} value={service.name}>- {service.heading}</option>
           )}

@@ -1,6 +1,6 @@
 import { ICategoriesOfServices } from "./IServices";
 
- interface ICardCategories extends Omit<ICategoriesOfServices, 'name'> {
+ interface ICardCategories extends ICategoriesOfServices {
   id: string;
   pathname: string;
   description: string;
@@ -9,6 +9,6 @@ import { ICategoriesOfServices } from "./IServices";
   time?: string;
  }
 
-export interface ICardService extends ICardCategories {
+export interface ICardService extends Omit<ICardCategories, 'name'> {
   categories?: ICardCategories[];
 }

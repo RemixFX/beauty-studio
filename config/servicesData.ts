@@ -1,6 +1,6 @@
 import { ICategoriesOfServices, IServices } from "@/types/IServices";
 
-const browsCategories: ICategoriesOfServices[] = [
+export const browsCategories: ICategoriesOfServices[] = [
   {
     name: 'brows_powder',
     heading: 'Пудровое напыление',

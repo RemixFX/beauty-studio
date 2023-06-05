@@ -44,6 +44,7 @@ export default function Home() {
                   >
                     <Offer
                       id={category.id}
+                      name={category.name}
                       price={category.price}
                       time={category.time}
                     />

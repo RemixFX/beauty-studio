@@ -25,6 +25,6 @@ export const LINKS = [
   },
   {
     name: 'Контакты',
-    src: '#footer'
+    src: '#footer' //UPDATE
   },
 ]

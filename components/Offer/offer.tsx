@@ -3,11 +3,12 @@ import styles from './offer.module.scss'
 
 type OfferProps = {
   id: string;
+  name?: string;
   price?: number;
   time?: string; 
 }
 
-export default function Offer({id, price, time}: OfferProps) {
+export default function Offer({id, name, price, time}: OfferProps) {
   
   return (
     <>
@@ -16,7 +17,10 @@ export default function Offer({id, price, time}: OfferProps) {
         <p className={styles.execution}>Время выполнения: {time}</p>
       </div>
       <div className={styles.buttons}>
-        <Link href='/enlist'  className={styles.link}>Записаться</Link>
+        <Link href={{
+          pathname: '/enlist',
+          query: {service: id, category: name}
+        }} className={styles.link}>Записаться</Link>
         <Link href={{
           pathname: '/works',
           hash: '#' + id
