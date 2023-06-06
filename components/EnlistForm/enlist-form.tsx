@@ -3,8 +3,6 @@ import { Controller, SubmitHandler, useFieldArray, useForm } from 'react-hook-fo
 // @ts-ignore
 import InputMask from '@mona-health/react-input-mask'
 import { ServicesEnum } from '@/types/IServices'
-import { useEffect, useMemo } from 'react'
-import { servicesData } from '@/config/servicesData'
 import { ParsedUrlQuery } from 'querystring'
 import InputsGroup from '../InputsGroup/inputs-group'
 
@@ -42,6 +40,9 @@ export default function EnlistForm({ closeForm, query }: EnlistFormProps) {
     control
   });
 
+  const addInputs = () => append({ service: ServicesEnum.brows, category: '' })
+  const closeInputs = (index: number) => remove(index)
+
   const watchServiceField = watch('services')
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
@@ -51,8 +52,13 @@ export default function EnlistForm({ closeForm, query }: EnlistFormProps) {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         {fields.map((field, index) =>
           <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
-            watchServiceField={watchServiceField[index].service} query={query} />
+            watchServiceField={watchServiceField[index].service} query={query}
+             closeInputs={closeInputs} />
         )}
+        <button type="button" className={styles.append}
+          onClick={addInputs}>
+          добавить услугу
+        </button>
         <label className={styles.field}>Имя</label>
         <input className={styles.input} type='text' {...register("name", { required: true })} />
         <span className={styles.error}>{errors.name && 'необходимо ввести имя'}</span>
@@ -66,16 +72,8 @@ export default function EnlistForm({ closeForm, query }: EnlistFormProps) {
           )}
         />
         <span className={styles.error}>{errors.phone && 'необходимо ввести номер телефона'}</span>
-        <button className={styles.button}>Записаться</button>
+        <button className={styles.submit}>Записаться</button>
         <span className={styles.close} onClick={closeForm}></span>
-        <button type="button"
-          onClick={() => append({service: ServicesEnum.brows,category: ''})}>
-            добавить услугу
-        </button>
-        <button type="button"
-          onClick={() => remove(length)}>
-            удалить услугу
-        </button>
       </form>
       <p className={styles.info}>После записи, с Вами свяжется мастер что бы
         рассказать об оплате, а также дать рекомендации для подготовки к процедуре.</p>

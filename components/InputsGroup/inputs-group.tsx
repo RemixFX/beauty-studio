@@ -8,12 +8,14 @@ import styles from './inputs-group.module.scss'
 interface IInputsGroup {
   register: UseFormRegister<IFormInput>;
   setValue: UseFormSetValue<IFormInput>;
+  closeInputs: (arg: number) => void;
   index: number;
   watchServiceField: string | string[] | undefined;
   query: ParsedUrlQuery;
+
 }
 
-export default function InputsGroup({ register, setValue, index, watchServiceField, query }: IInputsGroup) {
+export default function InputsGroup({ register, setValue, closeInputs, index, watchServiceField, query }: IInputsGroup) {
 
   const category = useMemo(() => {
     return servicesData.find((service) => service.name === watchServiceField)?.categories
@@ -26,11 +28,11 @@ export default function InputsGroup({ register, setValue, index, watchServiceFie
       setValue(`services.${index}.category`, '')
     }
   }, [category, index, query.category, setValue])
-  
+
   return (
     <div className={styles.content}>
       <label className={styles.field}>Услуга</label>
-      <select className={`${styles.input} ${styles.select}`} {...register(`services.${index}.service`)}>
+      <select className={styles.select} {...register(`services.${index}.service` as const)}>
         {servicesData.map((service) =>
           <option key={service.name} value={service.name}>- {service.heading}</option>
         )}
@@ -38,13 +40,17 @@ export default function InputsGroup({ register, setValue, index, watchServiceFie
       {category &&
         <>
           <label className={styles.field}>Категория</label>
-          <select className={`${styles.input} ${styles.select}`} {...register(`services.${index}.category`)}>
+          <select className={styles.select} {...register(`services.${index}.category` as const)}>
             {category.map((category) =>
               <option key={category.name} value={category.name}>- {category.heading}</option>
             )}
           </select>
         </>
       }
+      {index !== 0 && <button type="button" className={styles.button}
+        onClick={() => closeInputs(index)}>
+        X
+      </button>}
     </div>
   )
 }
