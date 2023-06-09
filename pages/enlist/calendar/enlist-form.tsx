@@ -1,16 +1,11 @@
-import styles from './enlist-form.module.scss'
+import styles from '@/styles/enlist-form.module.scss'
 import { Controller, SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
 // @ts-ignore
 import InputMask from '@mona-health/react-input-mask'
 import { ServicesEnum } from '@/types/IServices'
 import { ParsedUrlQuery } from 'querystring'
-import InputsGroup from '../InputsGroup/inputs-group'
-
-type EnlistFormProps = {
-  closeForm: () => void
-  query: ParsedUrlQuery
-  /* submitForm: (value: string) => void */
-}
+import InputsGroup from '@/components/InputsGroup/inputs-group'
+import { useRouter } from 'next/router'
 
 export interface IFormInput {
   services: {
@@ -21,8 +16,9 @@ export interface IFormInput {
   phone: string;
 }
 
-export default function EnlistForm({ closeForm, query }: EnlistFormProps) {
+export default function EnlistForm() {
 
+  const { query, push } = useRouter()
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<IFormInput>({
     defaultValues: {
       services:
@@ -46,6 +42,13 @@ export default function EnlistForm({ closeForm, query }: EnlistFormProps) {
   const watchServiceField = watch('services')
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+
+  const closeForm = () => {
+    push({
+      pathname: '/enlist/calendar',
+      query: query
+    })
+  }
 
   return (
     <div className={styles.modal}>

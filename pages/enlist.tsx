@@ -22,7 +22,7 @@ export default function Enlist() {
           <h1 className={styles.header}>Запись</h1>
           <p className={styles.description}>есть несколько способов записаться:</p>
           <Link href={{
-            pathname: '/calendar',
+            pathname: '/enlist/calendar',
             query: router.query
           }} 
           className={`${styles.button} ${styles.button_calendar}`}>Онлайн</Link>
@@ -35,7 +35,7 @@ export default function Enlist() {
           <a href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20проконсультироваться"
             className={`${styles.button} ${styles.button_whatsapp}`}>Написать в Whatsapp</a>
           <p className={styles.description}>посмотреть доступные даты:</p>
-          <Link href={'/calendar'} className={`${styles.button} ${styles.button_calendar}`}>В календаре</Link>
+          <Link href={'/enlist/calendar'} className={`${styles.button} ${styles.button_calendar}`}>В календаре</Link>
         </section>
       </Layout>
       <Footer />
