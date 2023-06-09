@@ -6,6 +6,7 @@ import { ServicesEnum } from '@/types/IServices'
 import { ParsedUrlQuery } from 'querystring'
 import InputsGroup from '@/components/InputsGroup/inputs-group'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 export interface IFormInput {
   services: {
@@ -51,12 +52,15 @@ export default function EnlistForm() {
   }
 
   return (
-    <div className={styles.modal}>
+    <>
+      <Head>
+        <title>Запись на процедуру</title>
+      </Head>
+      <h1 className={styles.header}>Записаться на 12 июня</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        {fields.map((field, index) =>
-          <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
-            watchServiceField={watchServiceField[index].service} query={query}
-             closeInputs={closeInputs} />
+        {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
+          watchServiceField={watchServiceField[index].service} query={query}
+          closeInputs={closeInputs} />
         )}
         <button type="button" className={styles.append}
           onClick={addInputs}>
@@ -72,14 +76,13 @@ export default function EnlistForm() {
           rules={{ required: true }}
           render={({ field }) => (
             <InputMask mask='+7\ (999) 999-99-99' {...field} className={styles.input} />
-          )}
-        />
+          )} />
         <span className={styles.error}>{errors.phone && 'необходимо ввести номер телефона'}</span>
         <button className={styles.submit}>Записаться</button>
         <span className={styles.close} onClick={closeForm}></span>
-      </form>
-      <p className={styles.info}>После записи, с Вами свяжется мастер что бы
+      </form><p className={styles.info}>После записи, с Вами свяжется мастер что бы
         рассказать об оплате, а также дать рекомендации для подготовки к процедуре.</p>
-    </div>
+    </>
+
   )
 }

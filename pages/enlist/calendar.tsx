@@ -5,7 +5,6 @@ import useDate from '@/hooks/useDate'
 import styles from '@/styles/calendar.module.scss'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 
 export default function Calendar() {
 

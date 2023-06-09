@@ -1,9 +1,9 @@
 import { servicesData } from '@/config/servicesData'
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form'
-import { IFormInput } from '../EnlistForm/enlist-form'
 import { useEffect, useMemo } from 'react'
 import { ParsedUrlQuery } from 'querystring'
 import styles from './inputs-group.module.scss'
+import { IFormInput } from '@/pages/enlist/calendar/enlist-form'
 
 interface IInputsGroup {
   register: UseFormRegister<IFormInput>;

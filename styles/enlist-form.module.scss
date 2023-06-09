@@ -1,13 +1,7 @@
-.modal {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  background: var(--black);
-  z-index: 4;
+.header {
+  padding: 1rem 1rem 0;
+  font-size: 1.4rem;
+  text-align: center;
 }
 
 .form {
@@ -18,14 +12,15 @@
 
 .append {
   min-height: 20px;
-  border: none;
   font-size: 0.8rem;
   margin-top: 10px;
   width: 100%;
   padding: 5px;
   align-self: center;
   font-style: italic;
-  background: var(--yellow);
+  color: inherit;
+  border: 1px solid silver;
+  background: var(--bg-darkblue);
   cursor: pointer;
 }
 
@@ -112,7 +107,7 @@
 }
 
 .info {
-  margin: auto 1rem 2rem;
+  margin: 2rem 1rem;
   padding: 1rem;
   border: 1px dashed var(--yellow);
 }
