@@ -1,11 +1,11 @@
 import { gql } from "@apollo/client";
 
 export const getEntries = gql`
-  query {
+  query Query  {
     getEntries {
       id, name, phone, service, category, date, time
     }
-  } 
+  }
 `
 
 export const postEntries = gql`
@@ -14,5 +14,4 @@ export const postEntries = gql`
       id, date, time
     }
   }
-    
 `

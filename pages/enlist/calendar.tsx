@@ -8,14 +8,34 @@ import styles from '@/styles/calendar.module.scss'
 import { useRouter } from 'next/router'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { getEntries } from '@/api/entries';
+import { ApolloQueryResult } from '@apollo/client';
 
-
- const getStaticProps: GetStaticProps<{ data: any }> = async () => {
-    const data = await client.query({query: getEntries})
-  return { props: { data } }
+interface Entry {
+    id: number
+    name: string
+    phone: string
+    service: string
+    category: string | null
+    date: string
+    time: string
 }
 
-export default function Calendar({data}: InferGetStaticPropsType<typeof getStaticProps>) {
+interface Entries {
+  getEntries: Entry[]
+}
+
+ export const getStaticProps: GetStaticProps<{ entries: Entry[], error: boolean }> = async () => {
+  try {
+    const data : ApolloQueryResult<Entries> = await client.query({query: getEntries})
+    return { props: { entries: data.data.getEntries, error: false } }
+}
+  catch (error) {
+    return { props: { entries: [], error: true } }
+  }
+  
+}
+
+export default function Calendar({entries, error}: InferGetStaticPropsType<typeof getStaticProps>) {
 
   const router = useRouter()
   const {getNextDatesInterval} = useDate()
@@ -26,7 +46,7 @@ export default function Calendar({data}: InferGetStaticPropsType<typeof getStati
       query: router.query
     })
   }
-  console.log(data)
+  console.log(entries, error)
   const dates = getNextDatesInterval(30, 18)
 
   return (
