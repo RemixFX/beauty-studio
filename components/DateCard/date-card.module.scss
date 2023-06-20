@@ -63,6 +63,15 @@
     background-color: #ffffff2b;
     border-style: solid;
   }
+
+  &_error {
+    background: url(../../public/error_entry.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0px 6px;
+    background-color: #ff3f3f;
+    border-style: solid;
+  }
 }
 
 .button {
@@ -76,12 +85,13 @@
   position: relative;
 
   &::after {
-    content: "Записаться";
+    content: attr(title);
     transform: rotate(62deg);
     position: absolute;
     top: 33%;
     left: -10%;
     font-size: 1.1rem;
+    white-space: nowrap;
     color: #fff;
   }
 
@@ -95,5 +105,9 @@
     background: url(../../public/click.png);
     background-size: contain;
     background-repeat: no-repeat;
+  }
+
+  &:disabled {
+    background: linear-gradient(to bottom right, #331b3ff0, #000000);
   }
 }
