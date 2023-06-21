@@ -56,7 +56,7 @@ export default function EnlistForm() {
       <Head>
         <title>Запись на процедуру</title>
       </Head>
-      <h1 className={styles.header}>Записаться на 12 июня</h1>
+      <h1 className={styles.header}>Записаться на {query.day} {query.month}</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
           watchServiceField={watchServiceField[index].service} query={query}

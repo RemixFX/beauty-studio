@@ -1,21 +1,28 @@
+import { useRouter } from 'next/router';
 import styles from './date-card.module.scss'
 import { IEntryComponent } from '@/pages/enlist/calendar';
+import { ParsedUrlQuery } from 'querystring';
 
 type DateCardProps = {
-  handleClick: () => void;
+  openForm: (dateQuery: ParsedUrlQuery) => void;
   entry: IEntryComponent
   error: boolean
 }
 
-const arrMonthName = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+export default function DateCard({ openForm, entry, error }: DateCardProps) {
 
-export default function DateCard({ handleClick, entry, error }: DateCardProps) {
+  const { query } = useRouter()
+
+  const selectDate = () => {
+    const dateQuery = {...query, day: entry.date.day, month: entry.date.month}
+    openForm(dateQuery)
+  }
 
   return (
     <article className={styles.card}>
       <p className={styles.date}>
-        <span className={styles.number}>{entry.date.getDate()}</span>
-        {arrMonthName[entry.date.getMonth()]}
+        <span className={styles.number}>{entry.date.day}</span>
+        {entry.date.month}
       </p>
       <div className={styles.container}>
         <span className={`${styles.registration} ${entry.time[0] ? styles.registration_closed :
@@ -28,7 +35,7 @@ export default function DateCard({ handleClick, entry, error }: DateCardProps) {
           error ? styles.registration_error : styles.registration_open}`}>{error ? 'no data' : entry.time[3]}</span>
       </div>
       <button className={styles.button} title={entry.time.length === 4 ? 'Нет записи' : 'Записаться'}
-       disabled={entry.time.length === 4 ? true : false} onClick={handleClick}></button>
+       disabled={entry.time.length === 4 ? true : false} onClick={selectDate}></button>
     </article>
   )
 }

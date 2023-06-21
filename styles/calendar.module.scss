@@ -16,7 +16,14 @@
 
 .header {
   margin-top: 5px;
+  margin-bottom: 5px;
+  align-self: start;
+  font-size: 1.6rem;
+}
+
+.paragraph {
   margin-bottom: 25px;
   align-self: start;
-  font-size: 1.8rem;
+  font-family: inherit;
+  font-size: 1.2rem;
 }

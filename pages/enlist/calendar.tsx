@@ -3,7 +3,7 @@ import client from "@/apollo-client";
 import DateCard from '@/components/DateCard/date-card'
 import Footer from '@/components/Footer/footer'
 import NavPanel from '@/components/NavPanel/nav-panel'
-import useDate from '@/hooks/useDate'
+import useDate, { FormattedDate } from '@/hooks/useDate'
 import styles from '@/styles/calendar.module.scss'
 import { useRouter } from 'next/router'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
@@ -26,7 +26,7 @@ interface Entries {
 }
 
 export interface IEntryComponent {
-  date: Date
+  date: Omit<FormattedDate, 'timestamp'>
   time: string[]
 }
 
@@ -46,10 +46,10 @@ export default function Calendar({entries, error}: InferGetStaticPropsType<typeo
   const { getNextDatesInterval } = useDate()
   const dates = getNextDatesInterval(30, 18)
 
-  const redirectToForm = () => {
+  const redirectToForm = (query: any) => {
     router.push({
       pathname: '/enlist/calendar/enlist-form',
-      query: router.query
+      query
     })
   }
 
@@ -58,11 +58,11 @@ export default function Calendar({entries, error}: InferGetStaticPropsType<typeo
     for (let i = 0; i < dates.length; i++) {
       let entryTime: string[] = []
       for (let indexEntries = 0; indexEntries < entries.length; indexEntries++) {
-        if(Number(entries[indexEntries].date) === dates[i].getTime()) {
+        if(Number(entries[indexEntries].date) === dates[i].timestamp) {
           entryTime.push(entries[indexEntries].time)
         }
       }
-      dataEntries.push({date: dates[i], time: entryTime.sort()})
+      dataEntries.push({date: { day: dates[i].day, month: dates[i].month }, time: entryTime.sort()})
     }
     return dataEntries
   }, [entries, dates])
@@ -77,8 +77,9 @@ export default function Calendar({entries, error}: InferGetStaticPropsType<typeo
       </div>
       <section className={styles.content}>
         <h1 className={styles.header}>Выберите подходящую дату</h1>
+        <p className={styles.paragraph}>доступное время: с 9:00 до 20:00</p>
         {dataEntries.map((entry, index) =>
-          <DateCard handleClick={redirectToForm} entry={entry} key={index} error={error}/>
+          <DateCard openForm={redirectToForm} entry={entry} key={index} error={error}/>
         )}
       </section>
       <Footer/>
