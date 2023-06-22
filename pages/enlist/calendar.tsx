@@ -1,3 +1,4 @@
+//SSG+ISR
 import Head from 'next/head'
 import client from "@/apollo-client";
 import DateCard from '@/components/DateCard/date-card'
@@ -12,13 +13,13 @@ import { ApolloQueryResult } from '@apollo/client';
 import { useMemo } from 'react';
 
 interface Entry {
-    id: number
-    name: string
-    phone: string
-    service: string
-    category: string | null
-    date: Date
-    time: string
+  id: number
+  name: string
+  phone: string
+  service: string
+  category: string | null
+  date: Date
+  time: string
 }
 
 interface Entries {
@@ -30,17 +31,17 @@ export interface IEntryComponent {
   time: string[]
 }
 
- export const getStaticProps: GetStaticProps<{ entries: Entry[], error: boolean }> = async () => {
+export const getStaticProps: GetStaticProps<{ entries: Entry[], error: boolean }> = async () => {
   try {
-    const { data } : ApolloQueryResult<Entries> = await client.query({query: getEntries})
+    const { data }: ApolloQueryResult<Entries> = await client.query({ query: getEntries })
     return { props: { entries: data.getEntries, error: false }, revalidate: 10 }
-}
+  }
   catch (error) {
     return { props: { entries: [], error: true }, revalidate: 10 }
   }
 }
 
-export default function Calendar({entries, error}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Calendar({ entries, error }: InferGetStaticPropsType<typeof getStaticProps>) {
 
   const router = useRouter()
   const { getNextDatesInterval } = useDate()
@@ -58,15 +59,15 @@ export default function Calendar({entries, error}: InferGetStaticPropsType<typeo
     for (let i = 0; i < dates.length; i++) {
       let entryTime: string[] = []
       for (let indexEntries = 0; indexEntries < entries.length; indexEntries++) {
-        if(Number(entries[indexEntries].date) === dates[i].timestamp) {
+        if (Number(entries[indexEntries].date) === dates[i].timestamp) {
           entryTime.push(entries[indexEntries].time)
         }
       }
-      dataEntries.push({date: { day: dates[i].day, month: dates[i].month }, time: entryTime.sort()})
+      dataEntries.push({ date: { day: dates[i].day, month: dates[i].month }, time: entryTime.sort() })
     }
     return dataEntries
   }, [entries, dates])
-  
+
   return (
     <>
       <Head>
@@ -79,10 +80,10 @@ export default function Calendar({entries, error}: InferGetStaticPropsType<typeo
         <h1 className={styles.header}>Выберите подходящую дату</h1>
         <p className={styles.paragraph}>доступное время: с 9:00 до 20:00</p>
         {dataEntries.map((entry, index) =>
-          <DateCard openForm={redirectToForm} entry={entry} key={index} error={error}/>
+          <DateCard openForm={redirectToForm} entry={entry} key={index} error={error} />
         )}
       </section>
-      <Footer/>
+      <Footer />
     </>
   )
 }

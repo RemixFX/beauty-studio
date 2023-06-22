@@ -7,8 +7,10 @@ import { ParsedUrlQuery } from 'querystring'
 import InputsGroup from '@/components/InputsGroup/inputs-group'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import RadioGroup from '@/components/RadioGroup/radio-group'
 
 export interface IFormInput {
+  time: string;
   services: {
     service: ServicesEnum | ParsedUrlQuery[string];
     category: string | ParsedUrlQuery[string];
@@ -19,9 +21,11 @@ export interface IFormInput {
 
 export default function EnlistForm() {
 
+
   const { query, push } = useRouter()
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<IFormInput>({
     defaultValues: {
+      time: '',
       services:
         [{
           service: query.service ? query.service : ServicesEnum.brows,
@@ -58,6 +62,10 @@ export default function EnlistForm() {
       </Head>
       <h1 className={styles.header}>Записаться на {query.day} {query.month}</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <h2 className={styles.group_header}>Доступные даты:</h2>
+        <div className={styles.radio}>
+          <RadioGroup register={register} value='12:00'/>
+        </div>
         {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
           watchServiceField={watchServiceField[index].service} query={query}
           closeInputs={closeInputs} />
@@ -67,7 +75,7 @@ export default function EnlistForm() {
           добавить услугу
         </button>
         <label className={styles.field}>Имя</label>
-        <input className={styles.input} type='text' {...register("name", { required: true })} />
+        <input className={styles.input} type='text' {...register('name', { required: true })} />
         <span className={styles.error}>{errors.name && 'необходимо ввести имя'}</span>
         <label className={styles.field}>Телефон</label>
         <Controller

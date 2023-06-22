@@ -14,7 +14,13 @@ export default function DateCard({ openForm, entry, error }: DateCardProps) {
   const { query } = useRouter()
 
   const selectDate = () => {
-    const dateQuery = {...query, day: entry.date.day, month: entry.date.month}
+    const dateQuery = {
+      ...query,
+      day: entry.date.day,
+      month: entry.date.month,
+      availableTime: entry.time
+    }
+    console.log(dateQuery)
     openForm(dateQuery)
   }
 
@@ -35,7 +41,7 @@ export default function DateCard({ openForm, entry, error }: DateCardProps) {
           error ? styles.registration_error : styles.registration_open}`}>{error ? 'no data' : entry.time[3]}</span>
       </div>
       <button className={styles.button} title={entry.time.length === 4 ? 'Нет записи' : 'Записаться'}
-       disabled={entry.time.length === 4 ? true : false} onClick={selectDate}></button>
+        disabled={entry.time.length === 4 ? true : false} onClick={selectDate}></button>
     </article>
   )
 }

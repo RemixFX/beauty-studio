@@ -5,17 +5,16 @@ import { ParsedUrlQuery } from 'querystring'
 import styles from './inputs-group.module.scss'
 import { IFormInput } from '@/pages/enlist/calendar/enlist-form'
 
-interface IInputsGroup {
+interface InputsGroupProps {
   register: UseFormRegister<IFormInput>;
   setValue: UseFormSetValue<IFormInput>;
   closeInputs: (arg: number) => void;
   index: number;
   watchServiceField: string | string[] | undefined;
   query: ParsedUrlQuery;
-
 }
 
-export default function InputsGroup({ register, setValue, closeInputs, index, watchServiceField, query }: IInputsGroup) {
+export default function InputsGroup({ register, setValue, closeInputs, index, watchServiceField, query }: InputsGroupProps) {
 
   const category = useMemo(() => {
     return servicesData.find((service) => service.name === watchServiceField)?.categories
