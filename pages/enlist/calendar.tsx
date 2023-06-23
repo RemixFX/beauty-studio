@@ -1,4 +1,4 @@
-//SSG+ISR
+//SSR
 import Head from 'next/head'
 import client from "@/apollo-client";
 import DateCard from '@/components/DateCard/date-card'
@@ -7,17 +7,12 @@ import NavPanel from '@/components/NavPanel/nav-panel'
 import useDate, { FormattedDate } from '@/hooks/useDate'
 import styles from '@/styles/calendar.module.scss'
 import { useRouter } from 'next/router'
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { getEntries } from '@/api/entries';
 import { ApolloQueryResult } from '@apollo/client';
 import { useMemo } from 'react';
 
 interface Entry {
-  id: number
-  name: string
-  phone: string
-  service: string
-  category: string | null
   date: Date
   time: string
 }
@@ -31,17 +26,18 @@ export interface IEntryComponent {
   time: string[]
 }
 
-export const getStaticProps: GetStaticProps<{ entries: Entry[], error: boolean }> = async () => {
+export const getServerSideProps: GetServerSideProps<{ entries: Entry[], error: boolean }> = async () => {
   try {
     const { data }: ApolloQueryResult<Entries> = await client.query({ query: getEntries })
-    return { props: { entries: data.getEntries, error: false }, revalidate: 10 }
+    
+    return { props: {entries: data.getEntries, error: false} }
   }
   catch (error) {
-    return { props: { entries: [], error: true }, revalidate: 10 }
+    return { props: { entries: [], error: true } }
   }
 }
 
-export default function Calendar({ entries, error }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Calendar({ entries, error }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
   const router = useRouter()
   const { getNextDatesInterval } = useDate()

@@ -21,8 +21,7 @@ export interface IFormInput {
 
 export default function EnlistForm() {
 
-
-  const { query, push } = useRouter()
+  const { query, push, } = useRouter()
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<IFormInput>({
     defaultValues: {
       time: '',
@@ -51,7 +50,7 @@ export default function EnlistForm() {
   const closeForm = () => {
     push({
       pathname: '/enlist/calendar',
-      query: query
+      query: query,
     })
   }
 
@@ -64,7 +63,7 @@ export default function EnlistForm() {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <h2 className={styles.group_header}>Доступные даты:</h2>
         <div className={styles.radio}>
-          <RadioGroup register={register} value='12:00'/>
+          <RadioGroup register={register} value='12:00' />
         </div>
         {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
           watchServiceField={watchServiceField[index].service} query={query}
