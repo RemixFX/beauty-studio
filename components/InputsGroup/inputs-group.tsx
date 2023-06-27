@@ -1,9 +1,9 @@
 import { servicesData } from '@/config/servicesData'
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import { useEffect, useMemo } from 'react'
-import { ParsedUrlQuery } from 'querystring'
 import styles from './inputs-group.module.scss'
 import { IFormInput } from '@/pages/enlist/calendar/enlist-form'
+import { ICalendarQuery } from '@/pages/enlist/calendar'
 
 interface InputsGroupProps {
   register: UseFormRegister<IFormInput>;
@@ -11,7 +11,7 @@ interface InputsGroupProps {
   closeInputs: (arg: number) => void;
   index: number;
   watchServiceField: string | string[] | undefined;
-  query: ParsedUrlQuery;
+  query: ICalendarQuery;
 }
 
 export default function InputsGroup({ register, setValue, closeInputs, index, watchServiceField, query }: InputsGroupProps) {
