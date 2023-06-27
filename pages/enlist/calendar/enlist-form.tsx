@@ -1,19 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styles from '@/styles/enlist-form.module.scss'
 import { Controller, SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
 // @ts-ignore
 import InputMask from '@mona-health/react-input-mask'
 import { ServicesEnum } from '@/types/IServices'
-import { ParsedUrlQuery } from 'querystring'
 import InputsGroup from '@/components/InputsGroup/inputs-group'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import RadioGroup from '@/components/RadioGroup/radio-group'
+import useDate from '@/hooks/useDate'
+import { ICalendarQuery } from '../calendar'
+import { START_WORK, END_WORK, DURATION_OF_SERVICE } from '@/config/calendar.config'
+import { useEffect } from 'react'
 
 export interface IFormInput {
   time: string;
   services: {
-    service: ServicesEnum | ParsedUrlQuery[string];
-    category: string | ParsedUrlQuery[string];
+    service: ServicesEnum | ICalendarQuery['service'];
+    category: string | ICalendarQuery['category'];
   }[];
   name: string;
   phone: string;
@@ -21,7 +25,11 @@ export interface IFormInput {
 
 export default function EnlistForm() {
 
-  const { query, push, } = useRouter()
+  const router = useRouter()
+  const query = router.query as ICalendarQuery
+  const { getAvailableTime } = useDate()
+  const closedTime = query.closedTime ? query.closedTime : []
+  const times = getAvailableTime(closedTime, START_WORK, END_WORK, DURATION_OF_SERVICE)
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<IFormInput>({
     defaultValues: {
       time: '',
@@ -48,13 +56,19 @@ export default function EnlistForm() {
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
 
   const closeForm = () => {
-    push({
+    router.push({
       pathname: '/enlist/calendar',
       query: query,
-    })
+    }, '/enlist/calendar')
   }
 
-  return (
+  useEffect(() => {
+    if (!query.day) {
+      closeForm()
+    }
+  }, [query.day])
+
+  return ( 
     <>
       <Head>
         <title>Запись на процедуру</title>
@@ -63,7 +77,9 @@ export default function EnlistForm() {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <h2 className={styles.group_header}>Доступные даты:</h2>
         <div className={styles.radio}>
-          <RadioGroup register={register} value='12:00' />
+          {times.map((time) => 
+            <RadioGroup register={register} key={time} value={time} />
+          )}
         </div>
         {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
           watchServiceField={watchServiceField[index].service} query={query}

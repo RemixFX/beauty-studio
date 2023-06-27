@@ -1,4 +1,12 @@
 interface GetNextDatesInterval { (number: number, hour?: number): FormattedDate[] }
+interface GetAvailableTime {
+  (
+    closedTime: string[],
+    startWork: string | number,
+    endWork: string | number,
+    durationOfService?: number
+  ): string[]
+}
 export interface FormattedDate {
   timestamp: number;
   day: string;
@@ -28,5 +36,34 @@ export default function useDate() {
     return arr
   }
 
-  return { getNextDatesInterval }
+  const getAvailableTime: GetAvailableTime = (closedTime, startWork, endWork, durationOfService) => {
+
+    if (closedTime.length >= 4) {
+      return [];
+    }
+
+    const arr: number[] = []
+    const duration = durationOfService ? durationOfService : 2
+    const parsedStartWork = typeof startWork === 'string' ? parseInt(startWork) : startWork
+    const parsedEndWork = typeof endWork === 'string' ? parseInt(endWork) : endWork
+    const parsedClosedTime = closedTime.map(t => parseInt(t))
+
+    let currentHour = parsedStartWork;
+    while (currentHour + duration <= parsedEndWork) {
+
+      if (!parsedClosedTime.includes(currentHour)
+        && !parsedClosedTime.includes(currentHour + 1)
+        && !parsedClosedTime.includes(currentHour - 1)
+      ) {
+        arr.push(currentHour);
+      }
+      currentHour++;
+    }
+    return arr.map(t => t.toString().padStart(2, '0') + ":00")
+  }
+
+  return { getNextDatesInterval, getAvailableTime }
 }
+
+
+//https://www.typescriptlang.org/

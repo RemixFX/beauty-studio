@@ -11,6 +11,8 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { getEntries } from '@/api/entries';
 import { ApolloQueryResult } from '@apollo/client';
 import { useMemo } from 'react';
+import { ParsedUrlQuery } from 'querystring';
+import { BLOCK_TIME, DISPLAYED_DAY } from '@/config/calendar.config';
 
 interface Entry {
   date: Date
@@ -24,6 +26,14 @@ interface Entries {
 export interface IEntryComponent {
   date: Omit<FormattedDate, 'timestamp'>
   time: string[]
+}
+
+export interface ICalendarQuery extends ParsedUrlQuery {
+  service?: string;
+  category?: string;
+  day?: string;
+  month?: string;
+  closedTime?: string[];
 }
 
 export const getServerSideProps: GetServerSideProps<{ entries: Entry[], error: boolean }> = async () => {
@@ -41,13 +51,13 @@ export default function Calendar({ entries, error }: InferGetServerSidePropsType
 
   const router = useRouter()
   const { getNextDatesInterval } = useDate()
-  const dates = getNextDatesInterval(30, 18)
+  const dates = getNextDatesInterval(DISPLAYED_DAY, BLOCK_TIME)
 
   const redirectToForm = (query: any) => {
     router.push({
       pathname: '/enlist/calendar/enlist-form',
       query
-    })
+    }, '/enlist/calendar/enlist-form')
   }
 
   const dataEntries = useMemo(() => {
@@ -59,7 +69,10 @@ export default function Calendar({ entries, error }: InferGetServerSidePropsType
           entryTime.push(entries[indexEntries].time)
         }
       }
-      dataEntries.push({ date: { day: dates[i].day, month: dates[i].month }, time: entryTime.sort() })
+      dataEntries.push({
+         date: { day: dates[i].day, month: dates[i].month },
+         time: entryTime.sort() 
+        })
     }
     return dataEntries
   }, [entries, dates])

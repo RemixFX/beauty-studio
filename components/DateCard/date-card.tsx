@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router';
 import styles from './date-card.module.scss'
-import { IEntryComponent } from '@/pages/enlist/calendar';
-import { ParsedUrlQuery } from 'querystring';
+import { ICalendarQuery, IEntryComponent } from '@/pages/enlist/calendar';
 
 type DateCardProps = {
-  openForm: (dateQuery: ParsedUrlQuery) => void;
+  openForm: (dateQuery: ICalendarQuery) => void;
   entry: IEntryComponent
   error: boolean
 }
@@ -18,9 +17,8 @@ export default function DateCard({ openForm, entry, error }: DateCardProps) {
       ...query,
       day: entry.date.day,
       month: entry.date.month,
-      availableTime: entry.time
+      closedTime: entry.time
     }
-    console.log(dateQuery)
     openForm(dateQuery)
   }
 
