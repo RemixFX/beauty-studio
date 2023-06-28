@@ -10,7 +10,7 @@ interface RadioGroupProps {
 export default function RadioGroup({ register, value }: RadioGroupProps) {
   return (
     <>
-      <input id={value} type='radio' className={styles.input} {...register('time')} value={value}></input>
+      <input id={value} type='radio' className={styles.input} {...register('time', { required: true })} value={value}></input>
       <label htmlFor={value} className={styles.field}>{value}</label>
     </>
   )

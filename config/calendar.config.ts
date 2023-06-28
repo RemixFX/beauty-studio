@@ -1,5 +1,5 @@
 // Время начала работы
-export const START_WORK = '08:00';
+export const START_WORK = '09:00';
 
 // Время конца работы
 export const END_WORK = '20:00';

@@ -68,7 +68,7 @@ export default function EnlistForm() {
     }
   }, [query.day])
 
-  return ( 
+  return (
     <>
       <Head>
         <title>Запись на процедуру</title>
@@ -77,14 +77,17 @@ export default function EnlistForm() {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <h2 className={styles.group_header}>Доступные даты:</h2>
         <div className={styles.radio}>
-          {times.map((time) => 
+          {times.map((time) =>
             <RadioGroup register={register} key={time} value={time} />
           )}
         </div>
+        <span className={styles.error}>{errors.time && 'необходимо выбрать время'}</span>
+        <div className={styles.select}>
         {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
           watchServiceField={watchServiceField[index].service} query={query}
           closeInputs={closeInputs} />
         )}
+        </div>
         <button type="button" className={styles.append}
           onClick={addInputs}>
           добавить услугу

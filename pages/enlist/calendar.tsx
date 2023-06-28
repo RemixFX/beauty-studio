@@ -12,7 +12,7 @@ import { getEntries } from '@/api/entries';
 import { ApolloQueryResult } from '@apollo/client';
 import { useMemo } from 'react';
 import { ParsedUrlQuery } from 'querystring';
-import { BLOCK_TIME, DISPLAYED_DAY } from '@/config/calendar.config';
+import { BLOCK_TIME, DISPLAYED_DAY, END_WORK, START_WORK } from '@/config/calendar.config';
 
 interface Entry {
   date: Date
@@ -87,7 +87,7 @@ export default function Calendar({ entries, error }: InferGetServerSidePropsType
       </div>
       <section className={styles.content}>
         <h1 className={styles.header}>Выберите подходящую дату</h1>
-        <p className={styles.paragraph}>доступное время: с 9:00 до 20:00</p>
+        <p className={styles.paragraph}>доступное время: с {START_WORK} до {END_WORK}</p>
         {dataEntries.map((entry, index) =>
           <DateCard openForm={redirectToForm} entry={entry} key={index} error={error} />
         )}
