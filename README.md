@@ -2,6 +2,8 @@
 
 ### В данный момент проект в вктивной разработке, следить за прогрессом можно на платформе Vercel: https://beauty-studio.vercel.app
 
+сервер для backend проекта: https://github.com/RemixFX/beauty-studio-server
+
 # Описание
 
  mobile-first приложение написанное на Next.js, которое будет включать в себя:

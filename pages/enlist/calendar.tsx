@@ -32,15 +32,17 @@ export interface ICalendarQuery extends ParsedUrlQuery {
   service?: string;
   category?: string;
   day?: string;
+  dateString: string;
   month?: string;
-  closedTime?: string[];
+  monthNumber?: string;
+  closedTime?: string[] | string;
 }
 
 export const getServerSideProps: GetServerSideProps<{ entries: Entry[], error: boolean }> = async () => {
   try {
     const { data }: ApolloQueryResult<Entries> = await client.query({ query: getEntries })
-    
-    return { props: {entries: data.getEntries, error: false} }
+
+    return { props: { entries: data.getEntries, error: false } }
   }
   catch (error) {
     return { props: { entries: [], error: true } }
@@ -70,9 +72,13 @@ export default function Calendar({ entries, error }: InferGetServerSidePropsType
         }
       }
       dataEntries.push({
-         date: { day: dates[i].day, month: dates[i].month },
-         time: entryTime.sort() 
-        })
+        date: {
+          day: dates[i].day,
+          month: dates[i].month,
+          dateString: dates[i].dateString
+        },
+        time: entryTime.sort()
+      })
     }
     return dataEntries
   }, [entries, dates])

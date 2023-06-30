@@ -15,9 +15,10 @@ export default function DateCard({ openForm, entry, error }: DateCardProps) {
   const selectDate = () => {
     const dateQuery = {
       ...query,
+      dateString: entry.date.dateString,
       day: entry.date.day,
       month: entry.date.month,
-      closedTime: entry.time
+      closedTime: entry.time,
     }
     openForm(dateQuery)
   }

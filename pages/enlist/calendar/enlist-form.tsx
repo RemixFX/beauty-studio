@@ -12,23 +12,53 @@ import useDate from '@/hooks/useDate'
 import { ICalendarQuery } from '../calendar'
 import { START_WORK, END_WORK, DURATION_OF_SERVICE } from '@/config/calendar.config'
 import { useEffect } from 'react'
+import { useMutation } from '@apollo/client'
+import { postEntries } from '@/api/entries'
+import client from '@/apollo-client'
 
 export interface IFormInput {
   time: string;
   services: {
-    service: ServicesEnum | ICalendarQuery['service'];
-    category: string | ICalendarQuery['category'];
+    service: string
+    category: string;
   }[];
   name: string;
   phone: string;
+}
+
+interface EntryInput {
+  name: string,
+  phone: string,
+  service: ServicesEnum | ICalendarQuery['service'];
+  category: string | ICalendarQuery['category'];
+  date: string;
+  time: string,
+}
+
+interface ResponseData {
+  date: string;
+  time: string;
 }
 
 export default function EnlistForm() {
 
   const router = useRouter()
   const query = router.query as ICalendarQuery
+  const [graphqlPostEntries, { data, loading, error }] = useMutation<ResponseData, EntryInput>(postEntries, { client });
   const { getAvailableTime } = useDate()
-  const closedTime = query.closedTime ? query.closedTime : []
+
+  const formatQueryParameters = () => {
+    let closedTime: string[] = []
+    if (typeof query.closedTime === 'string') {
+      closedTime.push(query.closedTime)
+    }
+    if (Array.isArray(query.closedTime)) {
+      closedTime = query.closedTime
+    }
+    return closedTime
+  }
+  
+  const closedTime = formatQueryParameters()
   const times = getAvailableTime(closedTime, START_WORK, END_WORK, DURATION_OF_SERVICE)
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<IFormInput>({
     defaultValues: {
@@ -47,13 +77,32 @@ export default function EnlistForm() {
     name: "services",
     control
   });
-
   const addInputs = () => append({ service: ServicesEnum.brows, category: '' })
   const closeInputs = (index: number) => remove(index)
 
   const watchServiceField = watch('services')
-
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    const sortedData: EntryInput[] = data.services.map((service, index) => {
+      return {
+        name: data.name,
+        phone: data.phone,
+        service: service.service,
+        category: service.category,
+        date: query.dateString,
+        time: (parseInt(data.time) + (index * DURATION_OF_SERVICE)).toString().padStart(2, '0') + ":00",
+      }
+    })
+    sortedData.map((entry) => graphqlPostEntries({
+      variables: {
+        name: entry.name,
+        phone: entry.phone,
+        service: entry.service,
+        category: entry.category,
+        date: entry.date,
+        time: entry.time
+      }
+    }))
+  }
 
   const closeForm = () => {
     router.push({
@@ -67,6 +116,18 @@ export default function EnlistForm() {
       closeForm()
     }
   }, [query.day])
+
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
+  if (error) {
+    return <h1>ERROR</h1>
+  }
+  if (data) {
+    setTimeout(() => {
+      router.push('/enlist/calendar')
+    }, 2000);
+  }
 
   return (
     <>
@@ -83,10 +144,10 @@ export default function EnlistForm() {
         </div>
         <span className={styles.error}>{errors.time && 'необходимо выбрать время'}</span>
         <div className={styles.select}>
-        {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
-          watchServiceField={watchServiceField[index].service} query={query}
-          closeInputs={closeInputs} />
-        )}
+          {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
+            watchServiceField={watchServiceField[index].service} query={query}
+            closeInputs={closeInputs} />
+          )}
         </div>
         <button type="button" className={styles.append}
           onClick={addInputs}>
