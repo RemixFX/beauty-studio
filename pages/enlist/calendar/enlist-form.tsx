@@ -15,6 +15,7 @@ import { useEffect } from 'react'
 import { useMutation } from '@apollo/client'
 import { postEntries } from '@/api/entries'
 import client from '@/apollo-client'
+import ModalWindow from '@/components/ModalWindow/modal-window'
 
 export interface IFormInput {
   time: string;
@@ -26,6 +27,13 @@ export interface IFormInput {
   phone: string;
 }
 
+export interface IResponseData {
+  createEntry: {
+    date: string;
+    time: string;
+  }
+}
+
 interface EntryInput {
   name: string,
   phone: string,
@@ -35,16 +43,11 @@ interface EntryInput {
   time: string,
 }
 
-interface ResponseData {
-  date: string;
-  time: string;
-}
-
 export default function EnlistForm() {
 
   const router = useRouter()
   const query = router.query as ICalendarQuery
-  const [graphqlPostEntries, { data, loading, error }] = useMutation<ResponseData, EntryInput>(postEntries, { client });
+  const [graphqlPostEntries, { data, loading, error }] = useMutation<IResponseData, EntryInput>(postEntries, { client });
   const { getAvailableTime } = useDate()
 
   const formatQueryParameters = () => {
@@ -57,7 +60,7 @@ export default function EnlistForm() {
     }
     return closedTime
   }
-  
+
   const closedTime = formatQueryParameters()
   const times = getAvailableTime(closedTime, START_WORK, END_WORK, DURATION_OF_SERVICE)
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<IFormInput>({
@@ -117,23 +120,13 @@ export default function EnlistForm() {
     }
   }, [query.day])
 
-  if (loading) {
-    return <h1>Loading...</h1>
-  }
-  if (error) {
-    return <h1>ERROR</h1>
-  }
-  if (data) {
-    setTimeout(() => {
-      router.push('/enlist/calendar')
-    }, 2000);
-  }
 
   return (
     <>
       <Head>
         <title>Запись на процедуру</title>
       </Head>
+      {(data || loading || error) && <ModalWindow data={data} loading={loading} error={error} />}
       <h1 className={styles.header}>Записаться на {query.day} {query.month}</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <h2 className={styles.group_header}>Доступные даты:</h2>
