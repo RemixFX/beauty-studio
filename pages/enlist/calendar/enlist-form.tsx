@@ -106,7 +106,7 @@ export default function EnlistForm() {
       }
     }))
   }
-
+  
   const closeForm = () => {
     router.push({
       pathname: '/enlist/calendar',

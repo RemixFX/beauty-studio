@@ -1,11 +1,12 @@
 import styles from './modal-window.module.scss'
 import { IResponseData } from '@/pages/enlist/calendar/enlist-form'
+import { ApolloError } from '@apollo/client';
 import { useRouter } from 'next/router';
 
 interface ModalWindowProps {
   data: IResponseData | null | undefined;
   loading: boolean;
-  error: any
+  error: ApolloError | undefined;
 }
 
 export default function ModalWindow({ data, loading, error }: ModalWindowProps) {
@@ -41,7 +42,7 @@ export default function ModalWindow({ data, loading, error }: ModalWindowProps) 
         {error &&
           <div className={styles.info}>
             <p className={`${styles.message} ${styles.message_type_error}`}>
-              Не удалось записаться. Попробуйте позже или выберите другой вариант записи.
+              {error.networkError ? 'Не удалось записаться. Попробуйте позже или выберите другой вариант записи.' : error.message}
             </p>
           </div>
         }
