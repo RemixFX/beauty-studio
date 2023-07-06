@@ -1,0 +1,90 @@
+.header {
+  padding: 4rem 1rem 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.form {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  padding: 0 8px 4px;
+  font-family: var(--text-font);
+  font-size: 1rem;
+}
+
+.input {
+  height: 34px;
+  font-size: 1.0rem;
+  border-radius: 11px;
+  padding: 4px 4px 0;
+  outline: none;
+
+  &:focus {
+    border: 2px solid var(--yellow);
+  }
+}
+
+.error {
+  min-height: 30px;
+  color: var(--error);
+  padding-top: 1px;
+}
+
+.submit {
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  min-height: 40px;
+  background: var(--bg-darkblue);
+  width: 60%;
+  font-size: 1.4rem;
+  margin-top: 32px;
+  box-shadow: 1px 6px 9px 0px rgb(0 0 0);
+  border-radius: 11px;
+  align-self: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 26px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 2px;
+    display: block;
+    background: var(--yellow);
+    height: 3px;
+    border-radius: 2px;
+    width: 100%;
+    transform: rotate3d(0, 0, 1, -45deg);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 2px;
+    display: block;
+    background: var(--yellow);
+    height: 3px;
+    border-radius: 2px;
+    width: 100%;
+    transform: rotate3d(0, 0, 1, 45deg);
+  }
+}
+
+.info {
+  margin: 2rem 1rem;
+  padding: 1rem;
+  border: 1px dashed var(--yellow);
+}

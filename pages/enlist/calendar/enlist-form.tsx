@@ -107,7 +107,7 @@ export default function EnlistForm() {
       }
     }))
   }
-  
+
   const closeForm = () => {
     router.push({
       pathname: '/enlist/calendar',
@@ -127,7 +127,7 @@ export default function EnlistForm() {
       <Head>
         <title>Запись на процедуру</title>
       </Head>
-      <NextNProgress/>
+      <NextNProgress />
       {(data || loading || error) && <ModalWindow data={data} loading={loading} error={error} />}
       <h1 className={styles.header}>Записаться на {query.day} {query.month}</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -162,8 +162,11 @@ export default function EnlistForm() {
         <span className={styles.error}>{errors.phone && 'необходимо ввести номер телефона'}</span>
         <button className={styles.submit}>Записаться</button>
         <span className={styles.close} onClick={closeForm}></span>
-      </form><p className={styles.info}>После записи, с Вами свяжется мастер что бы
-        рассказать об оплате, а также дать рекомендации для подготовки к процедуре.</p>
+      </form>
+      <p className={styles.info}>
+        После записи, с Вами свяжется мастер что бы рассказать об оплате,
+        а также дать рекомендации для подготовки к процедуре.
+      </p>
     </>
 
   )
