@@ -3,6 +3,7 @@ import styles from '@/styles/enlist-form.module.scss'
 import { Controller, SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
 // @ts-ignore
 import InputMask from '@mona-health/react-input-mask'
+import NextNProgress from 'nextjs-progressbar'
 import { ServicesEnum } from '@/types/IServices'
 import InputsGroup from '@/components/InputsGroup/inputs-group'
 import { useRouter } from 'next/router'
@@ -126,6 +127,7 @@ export default function EnlistForm() {
       <Head>
         <title>Запись на процедуру</title>
       </Head>
+      <NextNProgress/>
       {(data || loading || error) && <ModalWindow data={data} loading={loading} error={error} />}
       <h1 className={styles.header}>Записаться на {query.day} {query.month}</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

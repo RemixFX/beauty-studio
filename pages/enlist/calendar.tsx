@@ -6,6 +6,7 @@ import Footer from '@/components/Footer/footer'
 import NavPanel from '@/components/NavPanel/nav-panel'
 import useDate, { FormattedDate } from '@/hooks/useDate'
 import styles from '@/styles/calendar.module.scss'
+import NextNProgress from 'nextjs-progressbar'
 import { useRouter } from 'next/router'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { getEntries } from '@/api/entries';
@@ -88,6 +89,7 @@ export default function Calendar({ entries, error }: InferGetServerSidePropsType
       <Head>
         <title>Записи на процедуру</title>
       </Head>
+      <NextNProgress/>
       <div className={styles.navigation}>
         <NavPanel />
       </div>
