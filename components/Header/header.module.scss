@@ -1,3 +1,5 @@
+@use '@/styles/_variables';
+
 .header, .container {
   display: flex;
   flex-direction: row;
@@ -5,14 +7,24 @@
   align-items: center;
 }
 
+.container {
+  @include variables.desktop {
+    width: 24%;
+    flex-direction: column;
+  }
+}
+
 .header {
   position: sticky;
   top: 0;
   left: 0;
-  max-width: var(--max-width);
   padding: 13px;
   background: #000;
   z-index: 3;
+
+  @include variables.desktop {
+    background: #19181eeb;
+  }
 }
 
 .button {

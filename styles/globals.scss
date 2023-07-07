@@ -1,5 +1,8 @@
+@use '@/styles/_variables';
+
 :root {
-  --max-width: 412px;
+  --mobile-width: 412px;
+  --desktop-width: 1280px;
   --yellow: #f3cb38;
   --black: #19181e;
   --shaded: #000000cc;
@@ -7,7 +10,7 @@
   --margin10: 10px;
   --bg-darkblue: linear-gradient(to bottom right, rgb(2, 13, 46), rgb(2, 5, 19));
   --border-beige: #be9877;
-
+  
 }
 
 * {
@@ -19,8 +22,13 @@
 html,
 body {
   min-width: 320px;
-  max-width: var(--max-width);
+  max-width: var(--mobile-width);
   font-size: 16px;
+  margin: auto;
+
+  @include variables.desktop {
+    max-width: var(--desktop-width);
+  }
 }
 
 body {
@@ -47,3 +55,4 @@ img {
 p {
   font-family: var(--text-font);
 }
+
