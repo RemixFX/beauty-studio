@@ -17,4 +17,16 @@
 
 .link {
   text-align: center;
+
+  &_active {
+    color: var(--yellow);
+  }
+
+  &:hover {
+    color: var(--yellow);
+  }
+
+  &:active {
+    transform: scale(1.1);
+  }
 }

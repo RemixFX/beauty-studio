@@ -1,4 +1,4 @@
-$breakpoint--mobile: 1640px; //!
+$breakpoint--mobile: 640px; //!
 
 @mixin desktop {
   @media (min-width: ($breakpoint--mobile + 1)) {
