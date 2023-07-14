@@ -1,6 +1,8 @@
+@use '@/styles/_variables';
+
 @keyframes rotate {
   from {
-    transform: rotate(360deg);  
+    transform: rotate(360deg);
   }
 
   to {
@@ -14,6 +16,18 @@
   padding: 1rem;
   padding-top: 37px;
   min-height: calc(100vh - 57px);
+
+  @include variables.desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+}
+
+.left_block_mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .title {
@@ -28,23 +42,111 @@
   padding-top: 8px;
   position: relative;
 
+  @include variables.desktop {
+    display: none;
+    visibility: hidden;
+  }
+
   &__parth {
     text-align: end;
   }
 }
 
-.logo {
-  margin: auto;
+.description_mobile {
+  display: none;
+  visibility: hidden;
+
+  @include variables.desktop {
+    padding-top: 10px;
+    display: block;
+    visibility: visible;
+    list-style: none;
+    font-size: 1.1rem;
+  }
 }
 
+.mnemonic {
+  font-size: 1.5rem;
+  color: var(--yellow);
+}
+
+.right_block_mobile {
+  position: relative;
+  grid-row: 1 / 3;
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: auto;
+
+  &::before {
+    @include variables.desktop {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(134deg, #2a4eb5 35%, rgb(1 14 79) 58%);
+      filter: blur(78px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  }
+}
+
+.master {
+  display: none;
+
+  @include variables.desktop {
+    display: block;
+    object-fit: cover;
+    object-position: top;
+    height: 70%;
+  }
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+
+  @include variables.desktop {
+    width: 70%;
+    margin: auto;
+    margin-top: 1%;
+  }
+}
+
+.image_layout {
+  position: relative;
+  &::before {
+    @include variables.desktop {
+      content: "";
+      width: 80%;
+      height: 77%;
+      background: #020f4f;
+      filter: blur(24px);
+      position: absolute;
+      top: -47%;
+      left: 10%;
+    }
+  }
+}
+ 
+//#41002f розовый
 .about {
   margin-top: 30px;
 }
 
-.description {
+.services {
   list-style: none;
   position: relative;
   font-size: 1.2rem;
+
+  @include variables.desktop {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+    gap: 10px;
+  }
 }
 
 .service {
@@ -62,8 +164,8 @@
     position: absolute;
     z-index: -1;
     animation: 6s rotate linear infinite;
-    width: 380px;
-    height: 380px;
+    width: 110%;
+    height: 500px;
     background: conic-gradient(rgba(255, 255, 255, 0.5019607843),
         rgba(255, 255, 255, 0.2509803922), rgba(255, 255, 255, 0.1882352941),
         rgba(255, 255, 255, 0.1254901961), rgba(255, 255, 255, 0.062745098),
@@ -77,9 +179,21 @@
     inset: 0;
     padding: 1px;
     border-radius: 12px;
-    background: linear-gradient(to bottom right, rgba(2, 13, 46, 1),
-        rgba(2, 5, 19, 1));
+    background: var(--bg-darkblue);
     background-clip: content-box;
+  }
+
+  @include variables.desktop {
+    &:hover {
+      cursor: pointer;
+    }
+    &:hover::after {
+      transform: scale(1.1);
+    }
+  }
+
+  @include variables.tablet {
+    min-height: 100px;
   }
 
 }
