@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './description.module.scss'
 import logo from '@/public/lib/logo/logo_type2.png'
-import master from '@/public/lib/home/master1.png'
+import master from '@/public/lib/home/master.png'
 
 export default function Description() {
   return (
