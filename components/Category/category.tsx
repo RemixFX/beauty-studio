@@ -25,7 +25,7 @@ export default function Category({ heading, children }: CategoryProps) {
         height: springs.height.get() === viewHeight ? 0 : viewHeight,
         zIndex: springs.zIndex.get() ===  -1 ? 1 : -1
       },
-      config: { duration: 430 }
+      config: { duration: 370 }
     })
     if (e.currentTarget.classList.contains(styles.transform)) {
       e.currentTarget.classList.remove(styles.transform)

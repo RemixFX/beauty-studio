@@ -8,8 +8,6 @@ export default function NavPanelDesktop() {
   const LinksDesktop = LINKS.filter(element => element.name !== 'Записаться')
   const { pathname, asPath } = useRouter()
 
-  console.log(pathname.slice(- asPath.length), pathname, asPath)
-
   return (
     <nav className={styles.navigation}>
       {LinksDesktop.map((link) =>

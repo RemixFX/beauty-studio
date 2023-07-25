@@ -8,8 +8,22 @@ import Category from '@/components/Category/category'
 import Offer from '@/components/Offer/offer'
 import Layout from '@/components/Layout/layout'
 import cardDataServices from '@/config/cardDataServices'
+import { useState } from 'react'
+import CardModalDesktop from '@/components/desktop/CardModalDesktop/card-modal-desktop'
+import { ICardService } from '@/types/ICardService'
 
 export default function Home() {
+
+  const [cardData, setCardData] = useState<ICardService | null>(null)
+
+  const sendCardData = (data: ICardService) => {
+    setCardData(data)
+  }
+
+  const closeCard = () => {
+    setCardData(null)
+  }
+
   return (
     <>
       <Head>
@@ -20,47 +34,67 @@ export default function Home() {
       </Head>
       <Header />
       <Layout>
-        <Description/>
+        <Description />
       </Layout>
-      <section className={styles.main}>
-        {cardDataServices.map((service, index) =>
-          <Card
-            key={index}
-            pathname={service.pathname}
-            id={service.id}
-            heading={service.heading}
-            description={service.description}
-            type={service.type}
-          >
-            {service.categories ?
-              service.categories.map((category, index) =>
-                <Category key={index} heading={category.heading}>
-                  <Card
-                    pathname={category.pathname}
-                    id={category.id}
-                    heading={category.heading}
-                    description={category.description}
-                    type={category.type}
-                  >
-                    <Offer
-                      id={category.id}
-                      name={category.name}
-                      price={category.price}
-                      time={category.time}
-                    />
-                  </Card>
-                </Category>
-              )
-              :
-              <Offer
-                id={service.id}
-                price={service.price} 
-                time={service.time}
-                />
-            }
-          </Card>
-        )}
-      </section>
+      {cardData ?
+        <CardModalDesktop
+          pathname={cardData.pathname}
+          id={cardData.id}
+          heading={cardData.heading}
+          description={cardData.description}
+          type={cardData.type}
+          categories={cardData.categories}
+          handleCloseCard={closeCard}
+          price={cardData.price}
+          time={cardData.time}
+        />
+        :
+        <section className={styles.main}>
+          {cardDataServices.map((service, index) =>
+            <Card
+              key={index}
+              pathname={service.pathname}
+              id={service.id}
+              heading={service.heading}
+              description={service.description}
+              type={service.type}
+              categories={service.categories}
+              sendCardData={sendCardData}
+              price={service.price}
+              time={service.time}
+            >
+              <div className={styles.mobile_layout}>
+                {service.categories ?
+                  service.categories.map((category, index) =>
+                    <Category key={index} heading={category.heading}>
+                      <Card
+                        pathname={category.pathname}
+                        id={category.id}
+                        heading={category.heading}
+                        description={category.description}
+                        type={category.type}
+                      >
+                        <Offer
+                          id={category.id}
+                          name={category.name}
+                          price={category.price}
+                          time={category.time}
+                        />
+                      </Card>
+                    </Category>
+                  )
+                  :
+                  <Offer
+                    id={service.id}
+                    price={service.price}
+                    time={service.time}
+                  />
+                }
+              </div>
+            </Card>
+          )}
+        </section>
+      }
       <Footer />
     </>
   )

@@ -1,10 +1,20 @@
+@use '@/styles/_variables';
+
 .container {
   border: 1px solid;
   box-sizing: content-box;
+  position: relative;
+
+  &:hover .description {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
-.brows .lips .eyelashes {
-  border-color: green;
+.figure {
+  @include variables.mobile {
+    pointer-events: none;
+  }
 }
 
 .heading {
@@ -14,12 +24,30 @@
   box-shadow: inset 0px 0px 9px 1px #ffffff;
 }
 
-.description, .enum {
+.categories {
   background: var(--black);
   padding: 10px;
+
+  @include variables.desktop {
+    display: none;
+  }
 }
 
 .description {
   border-top: 1px solid #fff;
+  background: var(--black);
+  padding: 10px;
+
+  @include variables.desktop {
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    background: var(--shaded);
+    visibility: hidden;
+    opacity: 0;
+    border-top: none;
+    transition: opacity ease-in 250ms;
+    
+  }
 }
 

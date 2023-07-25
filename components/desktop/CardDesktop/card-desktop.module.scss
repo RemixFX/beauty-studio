@@ -1,0 +1,44 @@
+@use '@/styles/_variables';
+
+.card {
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: var(--black);
+  align-items: center;
+  background: linear-gradient(155deg, #5a85ff85 24%, rgb(23 23 32) 46%);
+}
+
+.figure {
+  width: 50%;
+  max-width: 420px;
+}
+
+.heading {
+  background: #000;
+  padding: 6px;
+  text-align: center;
+  box-shadow: inset 0px 0px 9px 1px #ffffff;
+}
+
+.categories {
+  padding: 10px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 550px;
+  margin: auto;
+}
+
+.description {
+  padding: 10px;
+  font-size: 0.9rem;
+
+  @include variables.tablet {
+    font-size: 1rem;
+  }
+}
