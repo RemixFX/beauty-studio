@@ -8,13 +8,14 @@ import Category from '@/components/Category/category'
 import Offer from '@/components/Offer/offer'
 import Layout from '@/components/Layout/layout'
 import cardDataServices from '@/config/cardDataServices'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import CardModalDesktop from '@/components/desktop/CardModalDesktop/card-modal-desktop'
 import { ICardService } from '@/types/ICardService'
 
 export default function Home() {
 
   const [cardData, setCardData] = useState<ICardService | null>(null)
+  const ref = useRef<HTMLDivElement>(null);
 
   const sendCardData = (data: ICardService) => {
     setCardData(data)
@@ -23,6 +24,10 @@ export default function Home() {
   const closeCard = () => {
     setCardData(null)
   }
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [cardData])
 
   return (
     <>
@@ -37,17 +42,19 @@ export default function Home() {
         <Description />
       </Layout>
       {cardData ?
-        <CardModalDesktop
-          pathname={cardData.pathname}
-          id={cardData.id}
-          heading={cardData.heading}
-          description={cardData.description}
-          type={cardData.type}
-          categories={cardData.categories}
-          handleCloseCard={closeCard}
-          price={cardData.price}
-          time={cardData.time}
-        />
+        <div ref={ref}>
+          <CardModalDesktop
+            pathname={cardData.pathname}
+            id={cardData.id}
+            heading={cardData.heading}
+            description={cardData.description}
+            type={cardData.type}
+            categories={cardData.categories}
+            handleCloseCard={closeCard}
+            price={cardData.price}
+            time={cardData.time}
+          />
+        </div>
         :
         <section className={styles.main}>
           {cardDataServices.map((service, index) =>

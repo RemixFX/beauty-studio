@@ -3,6 +3,7 @@ import { ICardService } from '@/types/ICardService';
 import Category from '@/components/Category/category';
 import Offer from '@/components/Offer/offer';
 import CardDesktop from '../CardDesktop/card-desktop';
+import { RefObject } from 'react';
 
 interface CardModalDesktopProps extends ICardService {
   handleCloseCard: () => void

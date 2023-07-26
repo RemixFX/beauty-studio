@@ -10,7 +10,6 @@
   --margin10: 10px;
   --bg-darkblue: linear-gradient(to bottom right, rgb(2, 13, 46), rgb(2, 5, 19));
   --border-beige: #be9877;
-  
 }
 
 * {
@@ -25,9 +24,11 @@ body {
   max-width: var(--mobile-width);
   font-size: 16px;
   margin: auto;
+  scroll-padding-top: 58px;
 
   @include variables.desktop {
     max-width: var(--desktop-width);
+    scroll-padding-top: 85px;
   }
 }
 

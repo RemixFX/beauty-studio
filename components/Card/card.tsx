@@ -20,8 +20,7 @@ export default function Card({
   sendCardData
 }: CardProps) {
 
-  const handleClickCard = (e: MouseEvent<HTMLElement>) => {
-    e.stopPropagation()
+  const handleClickCard = () => {
     if (sendCardData) {
       sendCardData(
         {
@@ -40,7 +39,7 @@ export default function Card({
 
   return (
     <article className={styles.container} id={id} style={{ marginBottom: '40px' /* marginTop: type === 'inCard' ? '0' : '40px' */ }}>
-      <figure className={styles.figure} onClick={(e) => handleClickCard(e)}>
+      <figure className={styles.figure} onClick={handleClickCard}>
         <Image width={380} height={380} src={pathname} alt={heading} />
         <figcaption className={styles.heading}>{heading}</figcaption>
       </figure>

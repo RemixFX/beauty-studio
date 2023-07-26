@@ -5,9 +5,16 @@
   box-sizing: content-box;
   position: relative;
 
-  &:hover .description {
-    opacity: 1;
-    visibility: visible;
+  &:hover {
+
+    @include variables.desktop {
+      cursor: pointer;
+    }
+
+    .description {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }
 
@@ -47,7 +54,5 @@
     opacity: 0;
     border-top: none;
     transition: opacity ease-in 250ms;
-    
   }
 }
-
