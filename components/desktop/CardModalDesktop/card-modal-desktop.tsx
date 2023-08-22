@@ -27,7 +27,9 @@ export default function CardModalDesktop({
 
   return (
     <div className={styles.container}>
-      <button className={styles.close_button} onClick={handleClick}>X</button>
+      <button className={styles.close_button} onClick={handleClick}>
+        <span></span>
+        </button>
       <CardDesktop
         id={id}
         pathname={pathname}
