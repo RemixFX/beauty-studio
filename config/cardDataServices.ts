@@ -159,7 +159,7 @@ const cardDataServices: ICardService[] = [
     description: CORRECTION,
     type: 'singleCard',
     price: 4000,
-    time: '~ 1ч'
+    time: '~1ч'
   },
   {
     id: 'overlap',
@@ -168,7 +168,7 @@ const cardDataServices: ICardService[] = [
     description: OVERLAP,
     type: 'singleCard',
     price: 6000,
-    time: '~ 1.5ч'
+    time: '~1.5ч'
   },
 ]
 

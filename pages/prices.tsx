@@ -16,13 +16,14 @@ export default function Prices() {
         <section className={styles.content}>
           <h1 className={styles.header}>Цены</h1>
           {servicesData.map((service, index) =>
-            <article key={index}>
+            <article key={index} className={styles.block}>
               <h2 className={styles.title}>{service.heading}</h2>
               {service.categories ?
                 service.categories.map((category, index) =>
                   <ul className={styles.list} key={index}>
                     <li className={styles.element}>
                       <p className={styles.name}>{category.heading}</p>
+                      <span className={styles.line}/>
                       <div className={styles.value}>
                         <span className={styles.price}>{category.price}р.</span>
                         <span className={styles.time}>{category.time}</span>
@@ -34,6 +35,7 @@ export default function Prices() {
                 <ul className={styles.list} key={index}>
                   <li className={styles.element}>
                     <p className={styles.name}>{service.heading}</p>
+                    <span className={styles.line}/>
                     <div className={styles.value}>
                       <span className={styles.price}>{service.price}р.</span>
                       <span className={styles.time}>{service.time}</span>

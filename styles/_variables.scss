@@ -1,5 +1,5 @@
-$breakpoint--mobile: 2640px; //!
-$breakpoint--tablet: 2871px; //!
+$breakpoint--mobile: 640px; //!
+$breakpoint--tablet: 871px; //!
 
 @mixin desktop {
   @media (min-width: ($breakpoint--mobile + 1)) {
