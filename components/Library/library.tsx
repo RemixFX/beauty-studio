@@ -24,7 +24,7 @@ export default function Library({ data, header, id}: LibraryProps) {
   const disableRightButton = useMemo(() => {
     if (roundPosition === width * (data.length - 1)) return true
   }, [data.length, roundPosition, width])
-
+  console.log(roundPosition, width)
   useEffect(() => {
     const element = scrollElement.current;
     function handleScroll() {

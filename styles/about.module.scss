@@ -1,3 +1,5 @@
+@use '@/styles/_variables';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -10,10 +12,51 @@
   margin-bottom: 5px;
   align-self: start;
   font-size: 1.8rem;
+
+  @include variables.desktop {
+    display: none;
+  }
+}
+
+.image {
+  max-width: 600px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+  max-width: 95%;
+
+  &::before {
+    content: '';
+    background-image: url(../public/quote-top.svg);
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    align-self: flex-start;
+    position: relative;
+    top: 20px;
+    left: 30px;
+  }
+
+  &::after {
+    content: '';
+    background-image: url(../public/quote-top.svg);
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    align-self: flex-end;
+    position: relative;
+    top: 7px;
+    right: 30px;
+  }
 }
 
 .description {
   margin-top: 15px;
+  font-family: inherit;
 }
 
 .link {
@@ -21,6 +64,7 @@
   color: var(--yellow);
   font-size: 1.2rem;
   position: relative;
+  font-family: var(--text-font);
 
   &::before {
     content: "➥";

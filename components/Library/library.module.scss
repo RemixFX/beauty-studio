@@ -1,8 +1,11 @@
+@use '@/styles/_variables';
+
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+  width: 100%;
 }
 
 .header {
@@ -13,14 +16,26 @@
   display: flex;
   flex-direction: row;
   overflow-x: auto;
+
+  @include variables.desktop {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--mobile-width), 1fr));
+    justify-items: center;
+    gap: 10px;
+  }
 }
 
 .layout {
   position: relative;
+  width: inherit;
 }
 
 .image {
   border: 2px solid #979797;
+
+  @include variables.desktop {
+    width: 524px;
+  }
 }
 
 .arrows {
@@ -29,6 +44,10 @@
   height: 100%;
   width: 43px;
   z-index: 1;
+
+  @include variables.desktop {
+    display: none;
+  }
 
   &_left {
     left: 9px;
@@ -58,6 +77,3 @@
     display: none;
   }
 }
-
-
-
