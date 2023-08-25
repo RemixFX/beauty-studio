@@ -212,13 +212,6 @@ import INextImage from "@/types/INextImage"
     id: 30
   },
   {
-    src: '/lib/reviews/images/review_32.jpeg',
-    height: 640,
-    width: 480,
-    alt: 'отзыв клиента',
-    id: 32
-  },
-  {
     src: '/lib/reviews/images/review_33.jpeg',
     height: 640,
     width: 480,
