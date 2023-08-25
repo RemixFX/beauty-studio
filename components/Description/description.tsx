@@ -7,7 +7,7 @@ export default function Description() {
   return (
     <section className={styles.section} id='services'>
       <div className={styles.left_block_mobile}>
-        <h1 className={styles.title}>Студия татуажа<br />Илоны Измайловой</h1>
+        <h1 className={styles.title}>Студия<br />перманентного макияжа<br />Илоны Измайловой</h1>
         <blockquote className={styles.quote}>&#34;Каждая девушка достойна...
           <span className={styles.quote__parth}> ...быть красивой&#34;</span>
         </blockquote>
@@ -31,25 +31,25 @@ export default function Description() {
         </ul>
       </div>
       <div className={styles.right_block_mobile}>
-        <Image src={master} alt="мастер перманентного татуажа" className={styles.master} />
+        <Image src={master} alt="мастер перманентного макияжа" className={styles.master} />
         <div className={styles.image_layout}>
-        <Image src={logo} alt="студия перманентного татуажа" className={styles.logo} />
+        <Image src={logo} alt="студия перманентного макияжа" className={styles.logo} />
         </div>
       </div>
       <div className={styles.bottom_block_mobile}>
         <p className={styles.about}>что мы можем сделать для Вас:</p>
         <ul className={styles.services}>
           <li className={styles.service}>
-            <a href='#brows' className={styles.link}>Татуаж бровей</a>
+            <a href='#brows' className={styles.link}>Перманентный макияж бровей</a>
           </li>
           <li className={styles.service}>
-            <a href='#lips' className={styles.link}>Татуаж губ</a>
+            <a href='#lips' className={styles.link}>Перманентный макияж губ</a>
           </li>
           <li className={styles.service}>
-            <a href='#eyelashes' className={styles.link}>Татуаж век</a>
+            <a href='#eyelashes' className={styles.link}>Перманентный макияж век</a>
           </li>
           <li className={styles.service}>
-            <a href='#correction' className={styles.link}>Коррекция татуажа</a>
+            <a href='#correction' className={styles.link}>Коррекция перманентного макияжа</a>
           </li>
           <li className={styles.service}>
             <a href='#overlap' className={styles.link}>Перекрытие татуажа</a>

@@ -6,6 +6,7 @@ import styles from '@/styles/works.module.scss'
 import LIPS from "@/public/lib/works/lips";
 import EYELASHES from "@/public/lib/works/eyelashes";
 import Footer from "@/components/Footer/footer";
+import Link from "next/link";
 
 export default function Works() {
 
@@ -15,12 +16,31 @@ export default function Works() {
         <title>Работы мастера</title>
       </Head>
       <Header />
-      <main className={styles.page}>
-      <h1 className={styles.header}>Работы мастера</h1>
-      <Library data={BROWS} header={'Татуаж бровей'} id='brows'/>
-      <Library data={LIPS} header={'Татуаж губ'} id='lips' />
-      <Library data={EYELASHES} header={'Татуаж век'} id='eyelashes' />
-      </main>
+      <section className={styles.page}>
+        <h1 className={styles.header}>Работы мастера</h1>
+        <nav className={styles.navigate}>
+          <ul className={styles.links}>
+            <li>
+              <Link href='#brows' className={styles.link}>
+                перманентный макияж бровей &#10230;
+              </Link>
+            </li>
+            <li>
+              <Link href='#lips' className={styles.link}>
+                перманентный макияж губ &#10230;
+              </Link>
+            </li>
+            <li>
+              <Link href='#eyelashes' className={styles.link}>
+                перманентный макияж век &#10230;
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <Library data={BROWS} header={'Перманентный макияж бровей'} id='brows' />
+        <Library data={LIPS} header={'Перманентный макияж губ'} id='lips' />
+        <Library data={EYELASHES} header={'Перманентный макияж век'} id='eyelashes' />
+      </section>
       <Footer />
     </>
   )

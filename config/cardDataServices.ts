@@ -155,7 +155,7 @@ const cardDataServices: ICardService[] = [
   {
     id: 'correction',
     pathname: '/lib/categories/correction/correction.jpg',
-    heading: 'Коррекция татуажа',
+    heading: 'Коррекция перманентного макияжа',
     description: CORRECTION,
     type: 'singleCard',
     price: 4000,

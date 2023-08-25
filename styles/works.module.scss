@@ -1,3 +1,5 @@
+@use '@/styles/_variables';
+
 .page {
   padding: 1rem;;
 }
@@ -5,4 +7,25 @@
 .header {
   margin-top: 5px;
   font-size: 1.8rem;
+
+  @include variables.desktop {
+    display: none;
+  }
 }
+
+.navigate {
+  display: none;
+  @include variables.desktop {
+    display: block;
+  }
+}
+
+.links {
+  list-style: none;
+  font-size: 1.1rem;
+}
+
+.link:hover {
+  color: var(--yellow);
+}
+
