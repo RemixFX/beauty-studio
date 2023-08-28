@@ -15,10 +15,13 @@ export default function Enlist() {
     <><Head>
       <title>Онлайн запись</title>
     </Head>
-    <NextNProgress/>
-    <div className={styles.navigation}>
-      <NavPanel />
-    </div>
+      <NextNProgress />
+      <div className={styles.navigation}>
+        <nav className={styles.return} onClick={() => router.back()}>
+          &#10229; Вернуться
+        </nav>
+        <NavPanel />
+      </div>
       <Layout>
         <section className={styles.content}>
           <h1 className={styles.header}>Запись</h1>
@@ -26,8 +29,8 @@ export default function Enlist() {
           <Link href={{
             pathname: '/enlist/calendar',
             query: router.query
-          }} 
-          className={`${styles.button} ${styles.button_calendar}`}>Онлайн</Link>
+          }}
+            className={`${styles.button} ${styles.button_calendar}`}>Онлайн</Link>
           <a href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20записаться%20на%20процедуру"
             className={`${styles.button} ${styles.button_whatsapp}`}>Через Whatsapp</a>
           <a href="https://t.me/ilonkaizmaylova"
