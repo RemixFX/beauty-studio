@@ -1,3 +1,5 @@
+@use '@/styles/_variables';
+
 .card {
   display: flex;
   flex-direction: row;
@@ -7,6 +9,10 @@
   border: 2px solid silver;
   border-radius: 15px;
   margin-bottom: 13px;
+
+  @include variables.desktop {
+    width: 90%;
+  }
 }
 
 .date {
@@ -53,6 +59,13 @@
     top: 30px;
     left: -11px;
     font-size: 1.0rem;
+    margin: 0;
+
+    @include variables.desktop {
+      transform: rotate(0);
+      position: static;
+      margin: auto;
+    }
   }
 
   &_closed {
@@ -66,11 +79,16 @@
 
   &_error {
     background: url(../../public/error_entry.png);
-    background-size: contain;
+    background-size: auto;
     background-repeat: no-repeat;
-    background-position: 0px 6px;
+    background-position: 50% 25%;
     background-color: #ff3f3f;
     border-style: solid;
+    padding-bottom: 0;
+
+    @include variables.desktop {
+      padding-bottom: 5px;
+    }
   }
 }
 
@@ -93,18 +111,29 @@
     font-size: 1.1rem;
     white-space: nowrap;
     color: #fff;
+
+    @include variables.desktop {
+      transform: rotate(0);
+      position: static;
+    }
   }
 
   &::before {
     content: "";
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     position: absolute;
     bottom: 8px;
     left: 2px;
     background: url(../../public/click.png);
     background-size: contain;
     background-repeat: no-repeat;
+
+    @include variables.desktop {
+      bottom: 4px;
+      left: auto;
+      right: 4px;
+    }
   }
 
   &:disabled {

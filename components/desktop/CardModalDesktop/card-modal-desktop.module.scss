@@ -39,15 +39,14 @@
   cursor: pointer;
 
   span {
-    background: url(../../../public/click.png);
     width: 20px;
     display: block;
     height: 20px;
-    background-size: contain;
-    background-repeat: no-repeat;
     position: relative;
-    top: 4px;
-    left: 11px;
+    top: 6px;
+    left: 9px;
+    color: #fff;
+    font-size: 1.1rem;
   }
 }
 

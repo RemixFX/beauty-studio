@@ -89,8 +89,11 @@ export default function Calendar({ entries, error }: InferGetServerSidePropsType
       <Head>
         <title>Записи на процедуру</title>
       </Head>
-      <NextNProgress/>
+      <NextNProgress />
       <div className={styles.navigation}>
+        <nav className={styles.return} onClick={() => router.back()}>
+          &#10229; Вернуться
+        </nav>
         <NavPanel />
       </div>
       <section className={styles.content}>
