@@ -57,7 +57,7 @@ export default function Calendar({ entries, error }: InferGetServerSidePropsType
   const dates = getNextDatesInterval(DISPLAYED_DAY, BLOCK_TIME)
 
   const redirectToForm = (query: any) => {
-    router.push({
+    router.replace({
       pathname: '/enlist/calendar/enlist-form',
       query
     }, '/enlist/calendar/enlist-form')

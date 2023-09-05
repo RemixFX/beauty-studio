@@ -1,3 +1,5 @@
+@use '@/styles/_variables';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -30,6 +32,12 @@
 
   &>option {
     background: var(--black);
+  }
+
+  @include variables.desktop {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

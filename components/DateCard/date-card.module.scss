@@ -137,6 +137,11 @@
   }
 
   &:disabled {
+    cursor: auto;
     background: linear-gradient(to bottom right, #331b3ff0, #000000);
+  }
+
+  &:disabled::before {
+    background: none;
   }
 }

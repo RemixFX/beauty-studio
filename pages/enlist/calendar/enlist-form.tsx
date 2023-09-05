@@ -109,7 +109,7 @@ export default function EnlistForm() {
   }
 
   const closeForm = () => {
-    router.push({
+    router.replace({
       pathname: '/enlist/calendar',
       query: query,
     }, '/enlist/calendar')
@@ -129,6 +129,7 @@ export default function EnlistForm() {
       </Head>
       <NextNProgress />
       {(data || loading || error) && <ModalWindow data={data} loading={loading} error={error} />}
+      <section className={styles.content}>
       <h1 className={styles.header}>Записаться на {query.day} {query.month}</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <h2 className={styles.group_header}>Доступные даты:</h2>
@@ -167,6 +168,7 @@ export default function EnlistForm() {
         После записи, с Вами свяжется мастер что бы рассказать об оплате,
         а также дать рекомендации для подготовки к процедуре.
       </p>
+      </section>
     </>
 
   )

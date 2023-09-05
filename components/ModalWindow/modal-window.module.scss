@@ -13,16 +13,16 @@
 }
 
 .layout {
-  min-width: 200px;
-  max-width: 80%;
+  min-width: 300px;
+  width: 30%;
   min-height: 100px;
   height: auto;
-  width: auto;
   border: 5px solid #fff;
   border-radius: 10px;
   position: relative;
   background-color: #050506d1;
   display: flex;
+  justify-content: center;
 
   &::after, &::before {
     content: "";

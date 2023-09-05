@@ -10,7 +10,7 @@ export const getEntries = gql`
 
 export const postEntries = gql`
 mutation Mutation($name: String, $phone: String, $service: String, $category: String, $date: String, $time: String) {
-  createEntry(name: $name, phone: $phone, service: $service, category: $category, date: $date, time: $time) {
+  createEntry(name: $name, pfhone: $phone, service: $service, category: $category, date: $date, time: $time) {
     date
     time
   }
