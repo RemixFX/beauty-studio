@@ -13,7 +13,12 @@ interface FormInput {
 export default function CallBack() {
 
   const router = useRouter()
-  const { register, handleSubmit, control, formState: { errors } } = useForm<FormInput>();
+  const { register, handleSubmit, control, formState: { errors } } = useForm<FormInput>({
+    defaultValues: {
+      name: '',
+      phone: ''
+    }
+  });
 
   const onSubmit: SubmitHandler<FormInput> = (data) => console.log(data)
 
@@ -26,6 +31,7 @@ export default function CallBack() {
       <Head>
         <title>Оставить номер телефона</title>
       </Head>
+      <section className={styles.content}>
       <h1 className={styles.header}>Оставить номер телефона</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <label className={styles.field}>Имя</label>
@@ -46,6 +52,7 @@ export default function CallBack() {
       <p className={styles.info}>
         С Вами свяжется мастер, что бы ответить на все Ваши вопросы.
       </p>
+      </section>
     </>
   )
 }

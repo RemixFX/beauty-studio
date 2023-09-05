@@ -1,3 +1,17 @@
+@use '@/styles/_variables';
+
+.content {
+  position: relative;
+  min-width: inherit;
+  width: 100%;
+  margin: auto;
+
+  @include variables.desktop {
+    min-width: var(--mobile-width);
+    width: 40%;
+  }
+}
+
 .header {
   padding: 4rem 1rem 2rem;
   font-size: 1.4rem;
@@ -55,6 +69,7 @@
   right: 10px;
   cursor: pointer;
   width: 26px;
+  height: 26px;
 
   &::before {
     content: "";
