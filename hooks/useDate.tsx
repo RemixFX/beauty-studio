@@ -2,6 +2,7 @@ interface GetNextDatesInterval { (number: number, hour?: number): FormattedDate[
 interface GetAvailableTime {
   (
     closedTime: string[],
+    lengthOfEntries: number,
     startWork: string | number,
     endWork: string | number,
     durationOfService?: number
@@ -38,31 +39,42 @@ export default function useDate() {
     return arr
   }
 
-  const getAvailableTime: GetAvailableTime = (closedTime, startWork, endWork, durationOfService) => {
+  const getAvailableTime: GetAvailableTime = (closedTime, lengthOfEntries, startWork, endWork, durationOfService) => {
 
     if (closedTime.length >= 4) {
       return [];
     }
 
-    const arr: number[] = []
-    const duration = durationOfService ? durationOfService : 2
-    const parsedStartWork = typeof startWork === 'string' ? parseInt(startWork) : startWork
-    const parsedEndWork = typeof endWork === 'string' ? parseInt(endWork) : endWork
-    const parsedClosedTime = closedTime.map(t => parseInt(t))
-    
-    let currentHour = parsedStartWork;
-    while (currentHour + duration <= parsedEndWork) {
+    const arr = [];
+    const parsedStartWork = typeof startWork === 'string' ? parseInt(startWork) : startWork;
+    const parsedEndWork = typeof endWork === 'string' ? parseInt(endWork) : endWork;
+    const parsedClosedTime = closedTime.map(t => parseInt(t));
+    const duration = durationOfService ? durationOfService : 2;
+    const length = (lengthOfEntries * duration) - duration
 
-      if (!parsedClosedTime.includes(currentHour)
-        && !parsedClosedTime.includes(currentHour + 1)
-        && !parsedClosedTime.includes(currentHour - 1)
-      ) {
+    let currentHour = parsedStartWork;
+    while (currentHour + (duration * lengthOfEntries) <= parsedEndWork) {
+      let isAvailable = true;
+
+      for (let i = 0; i <= length; i++) {
+        if (
+          parsedClosedTime.includes(currentHour + i) ||
+          parsedClosedTime.includes(currentHour + i + 1) ||
+          parsedClosedTime.includes(currentHour + i - 1)
+        ) {
+          isAvailable = false;
+          break;
+        }
+      }
+
+      if (isAvailable) {
         arr.push(currentHour);
       }
+
       currentHour++;
     }
-    
-    return arr.map(t => t.toString().padStart(2, '0') + ":00")
+
+    return arr.map(t => t.toString().padStart(2, '0') + ":00");
   }
 
   return { getNextDatesInterval, getAvailableTime }

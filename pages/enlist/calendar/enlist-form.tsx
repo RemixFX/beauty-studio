@@ -12,7 +12,7 @@ import RadioGroup from '@/components/RadioGroup/radio-group'
 import useDate from '@/hooks/useDate'
 import { ICalendarQuery } from '../calendar'
 import { START_WORK, END_WORK, DURATION_OF_SERVICE } from '@/config/calendar.config'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useMutation } from '@apollo/client'
 import { postEntries } from '@/api/entries'
 import client from '@/apollo-client'
@@ -63,7 +63,6 @@ export default function EnlistForm() {
   }
 
   const closedTime = formatQueryParameters()
-  const times = getAvailableTime(closedTime, START_WORK, END_WORK, DURATION_OF_SERVICE)
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<IFormInput>({
     defaultValues: {
       time: '',
@@ -81,11 +80,20 @@ export default function EnlistForm() {
     name: "services",
     control
   });
+  
+  const getTimes = useCallback(() => {
+   return getAvailableTime(closedTime, fields.length, START_WORK, END_WORK, DURATION_OF_SERVICE)
+  }, [fields])
+  const times = getTimes()
+
   const addInputs = () => append({ service: ServicesEnum.brows, category: '' })
   const closeInputs = (index: number) => remove(index)
 
   const watchServiceField = watch('services')
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    if (times.length === 0) {
+      return
+    }
     const sortedData: EntryInput[] = data.services.map((service, index) => {
       return {
         name: data.name,
@@ -132,12 +140,15 @@ export default function EnlistForm() {
       <section className={styles.content}>
       <h1 className={styles.header}>Записаться на {query.day} {query.month}</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <h2 className={styles.group_header}>Доступные даты:</h2>
+        <h2 className={styles.group_header}>Доступное время:</h2>
         <div className={styles.radio}>
           {times.map((time) =>
             <RadioGroup register={register} key={time} value={time} />
           )}
         </div>
+        {times.length === 0 &&
+            <p className={styles.error}>Нет доступного времени для записи на {fields.length} процедуры</p>
+          }
         <span className={styles.error}>{errors.time && 'необходимо выбрать время'}</span>
         <div className={styles.select}>
           {fields.map((field, index) => <InputsGroup key={field.id} register={register} setValue={setValue} index={index}
