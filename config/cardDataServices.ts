@@ -143,7 +143,7 @@ const cardDataServices: ICardService[] = [
       {
         id: "eyelashes",
         pathname: '/lib/categories/eyelashes/eyelashes_color.jpeg',
-        heading: 'Цветной',
+        heading: 'Цветной макияж',
         description: EYELASHES_COLOR,
         name: 'eyelashes-color',
         type: 'inCard',

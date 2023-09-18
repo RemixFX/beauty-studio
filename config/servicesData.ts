@@ -53,7 +53,7 @@ const eyelashesCategories: ICategoriesOfServices[] = [
   },
   {
     name: 'eyelashes-color',
-    heading: 'Цветной',
+    heading: 'Цветной макияж',
   },
 ]
 

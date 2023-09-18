@@ -4,6 +4,8 @@
 
 сервер для backend проекта: https://github.com/RemixFX/beauty-studio-server
 
+админ-панель: https://github.com/RemixFX/admin-panel
+
 # Описание
 
  mobile-first приложение написанное на Next.js, которое будет включать в себя:
