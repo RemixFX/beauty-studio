@@ -4,6 +4,7 @@
   border: 1px solid;
   box-sizing: content-box;
   position: relative;
+  margin-bottom: 40px;
 
   &:hover {
 
@@ -19,6 +20,7 @@
 }
 
 .figure {
+
   @include variables.mobile {
     pointer-events: none;
   }

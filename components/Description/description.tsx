@@ -31,9 +31,9 @@ export default function Description() {
         </ul>
       </div>
       <div className={styles.right_block_mobile}>
-        <Image src={master} alt="мастер перманентного макияжа" className={styles.master} />
+        <Image src={master} alt="мастер перманентного макияжа" className={styles.master} placeholder='blur'/>
         <div className={styles.image_layout}>
-        <Image src={logo} alt="студия перманентного макияжа" className={styles.logo} />
+        <Image src={logo} alt="студия перманентного макияжа" className={styles.logo} placeholder='blur'/>
         </div>
       </div>
       <div className={styles.bottom_block_mobile}>

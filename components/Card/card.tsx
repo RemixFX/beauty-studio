@@ -38,9 +38,9 @@ export default function Card({
   }
 
   return (
-    <article className={styles.container} id={id} style={{ marginBottom: '40px' /* marginTop: type === 'inCard' ? '0' : '40px' */ }}>
+    <article className={styles.container} id={id}>
       <figure className={styles.figure} onClick={handleClickCard}>
-        <Image width={380} height={380} src={pathname} alt={heading} />
+        <Image width={380} height={380} src={pathname} alt={heading} sizes='33vw'/>
         <figcaption className={styles.heading}>{heading}</figcaption>
       </figure>
       <p className={styles.description}>{description}</p>
