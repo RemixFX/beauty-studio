@@ -28,6 +28,15 @@ export default function Category({ heading, children }: CategoryProps) {
         zIndex: springs.zIndex.get() === -1 ? 1 : -1
       },
 
+      // Переопределение значений в случае если картинка не успела загрузиться при открытии
+      // защита от сбоя при медленном интернете
+      onResolve (result, ctrl) {
+        if (ctrl.get().height === 0) {
+          springs.opacity.set(0)
+          springs.zIndex.set(-1)
+        }
+      },
+
       config: { duration: 370 },
 
       onStart(result, ctrl) {
