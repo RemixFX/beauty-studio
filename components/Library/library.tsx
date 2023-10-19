@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import useMeasure from 'react-use-measure';
 import INextImage from '@/types/INextImage';
+import { BLUR_DATA_URL } from '@/config/consts';
 
 type LibraryProps = {
   data: INextImage[];
@@ -24,7 +25,7 @@ export default function Library({ data, header, id}: LibraryProps) {
   const disableRightButton = useMemo(() => {
     if (roundPosition === width * (data.length - 1)) return true
   }, [data.length, roundPosition, width])
-  console.log(roundPosition, width)
+
   useEffect(() => {
     const element = scrollElement.current;
     function handleScroll() {
@@ -68,6 +69,8 @@ export default function Library({ data, header, id}: LibraryProps) {
         <div className={styles.images} ref={scrollElement}>
           {data.map((img) =>
             <Image src={img.src}
+              placeholder='blur'
+              blurDataURL={BLUR_DATA_URL}
               alt={img.alt}
               key={img.id}
               height={img.height}

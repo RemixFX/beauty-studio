@@ -1,7 +1,8 @@
 import styles from './card.module.scss'
 import Image from 'next/image'
-import { MouseEvent, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { ICardService } from '@/types/ICardService';
+import { BLUR_DATA_URL } from '@/config/consts';
 
 interface CardProps extends ICardService {
   children?: ReactNode;
@@ -19,7 +20,7 @@ export default function Card({
   price, time,
   sendCardData
 }: CardProps) {
-
+ 
   const handleClickCard = () => {
     if (sendCardData) {
       sendCardData(
@@ -40,7 +41,8 @@ export default function Card({
   return (
     <article className={styles.container} id={id}>
       <figure className={styles.figure} onClick={handleClickCard}>
-        <Image width={380} height={380} src={pathname} alt={heading} sizes='33vw'/>
+        <Image width={380} height={380} src={pathname} alt={heading} sizes='33vw' placeholder='blur'
+         blurDataURL={BLUR_DATA_URL} />
         <figcaption className={styles.heading}>{heading}</figcaption>
       </figure>
       <p className={styles.description}>{description}</p>
