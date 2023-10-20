@@ -14,6 +14,7 @@ import { ApolloQueryResult } from '@apollo/client';
 import { useMemo } from 'react';
 import { ParsedUrlQuery } from 'querystring';
 import { BLOCK_TIME, DISPLAYED_DAY, END_WORK, START_WORK } from '@/config/calendar.config';
+import { getClosedDays } from '@/api/closed-days';
 
 interface Entry {
   date: Date
@@ -39,18 +40,35 @@ export interface ICalendarQuery extends ParsedUrlQuery {
   closedTime?: string[] | string;
 }
 
-export const getServerSideProps: GetServerSideProps<{ entries: Entry[], error: boolean }> = async () => {
-  try {
-    const { data }: ApolloQueryResult<Entries> = await client.query({ query: getEntries })
+interface ClosedDay {
+  id: string
+  date: string
+}
 
-    return { props: { entries: data.getEntries, error: false } }
+interface ClosedDays {
+  getClosedDaysForUser: ClosedDay[]
+}
+
+export const getServerSideProps: GetServerSideProps<{ entries: Entry[], closedDays: ClosedDay[], error: boolean }> = async () => {
+  try {
+    const [dataEntries, dataClosedDays]: [ApolloQueryResult<Entries>, ApolloQueryResult<ClosedDays>] = await Promise.all([
+      client.query({ query: getEntries }),
+      client.query({ query: getClosedDays })
+    ])
+    return {
+      props: {
+        entries: dataEntries.data.getEntries,
+        closedDays: dataClosedDays.data.getClosedDaysForUser,
+        error: false
+      }
+    }
   }
-  catch (error) {
-    return { props: { entries: [], error: true } }
+  catch {
+    return { props: { entries: [], closedDays: [], error: true } }
   }
 }
 
-export default function Calendar({ entries, error }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Calendar({ entries, closedDays, error }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 
   const router = useRouter()
   const { getNextDatesInterval } = useDate()
@@ -83,6 +101,8 @@ export default function Calendar({ entries, error }: InferGetServerSidePropsType
     }
     return dataEntries
   }, [entries, dates])
+
+  console.log(closedDays)
 
   return (
     <>

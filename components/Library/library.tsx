@@ -16,6 +16,7 @@ export default function Library({ data, header, id}: LibraryProps) {
   const scrollElement = useRef<HTMLDivElement>(null)
   const [ref, { width }] = useMeasure({ offsetSize: true })
   const [scrollPosition, setScrollPosition] = useState<number>(0)
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const roundPosition = Math.round(scrollPosition / width) * width;
 
   const disableLeftButton = useMemo(() => {
