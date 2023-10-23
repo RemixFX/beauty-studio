@@ -26,7 +26,7 @@ interface Entries {
 }
 
 export interface IEntryComponent {
-  date: Omit<FormattedDate, 'timestamp'>
+  date: FormattedDate
   time: string[]
 }
 
@@ -47,6 +47,14 @@ interface ClosedDay {
 
 interface ClosedDays {
   getClosedDaysForUser: ClosedDay[]
+}
+
+const checkIsClosed = (closedDay: ClosedDay[], calendarDay: number) => {
+  if (closedDay === undefined || closedDay.length === 0) return
+  for (let day of closedDay) {
+     if (Number(day.date) === calendarDay) return true
+  }
+  return false
 }
 
 export const getServerSideProps: GetServerSideProps<{ entries: Entry[], closedDays: ClosedDay[], error: boolean }> = async () => {
@@ -94,15 +102,14 @@ export default function Calendar({ entries, closedDays, error }: InferGetServerS
         date: {
           day: dates[i].day,
           month: dates[i].month,
-          dateString: dates[i].dateString
+          dateString: dates[i].dateString,
+          timestamp: dates[i].timestamp
         },
         time: entryTime.sort()
       })
     }
     return dataEntries
   }, [entries, dates])
-
-  console.log(closedDays)
 
   return (
     <>
@@ -120,7 +127,13 @@ export default function Calendar({ entries, closedDays, error }: InferGetServerS
         <h1 className={styles.header}>Выберите подходящую дату</h1>
         <p className={styles.paragraph}>доступное время: с {START_WORK} до {END_WORK}</p>
         {dataEntries.map((entry, index) =>
-          <DateCard openForm={redirectToForm} entry={entry} key={index} error={error} />
+          <DateCard
+           openForm={redirectToForm}
+           entry={entry} 
+           key={index}
+           isClosed={checkIsClosed(closedDays, entry.date.timestamp)}
+           error={error} 
+           />
         )}
       </section>
       <Footer />
