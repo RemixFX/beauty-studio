@@ -26,21 +26,39 @@ export default function Enlist() {
         <section className={styles.content}>
           <h1 className={styles.header}>Запись</h1>
           <p className={styles.description}>есть несколько способов записаться:</p>
-          <Link href={{
-            pathname: '/enlist/calendar',
-            query: router.query
-          }}
-            className={`${styles.button} ${styles.button_calendar}`}>Онлайн</Link>
-          <a href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20записаться%20на%20процедуру"
-            className={`${styles.button} ${styles.button_whatsapp}`}>Через Whatsapp</a>
-          <a href="https://t.me/ilonkaizmaylova"
-            className={`${styles.button} ${styles.button_telegram}`}>Через Telegram</a>
+          <ul className={styles.list}>
+            <li>
+              <Link href={{
+                pathname: '/enlist/calendar',
+                query: router.query
+              }}
+                className={`${styles.button} ${styles.button_calendar}`}>Онлайн</Link>
+            </li>
+            <li>
+              <Link href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20записаться%20на%20процедуру"
+                className={`${styles.button} ${styles.button_whatsapp}`}>Через WhatsApp</Link>
+            </li>
+            <li>
+              <Link href="https://t.me/ilonkaizmaylova"
+                className={`${styles.button} ${styles.button_telegram}`}>Через Telegram</Link>
+            </li>
+          </ul>
           <p className={styles.description}>или попросить консультацию:</p>
-          <Link href='/call-back' className={`${styles.button} ${styles.button_phone}`}>Оставить телефон</Link>
-          <a href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20проконсультироваться"
-            className={`${styles.button} ${styles.button_whatsapp}`}>Написать в Whatsapp</a>
+          <ul className={styles.list}>
+            <li>
+              <Link href='/call-back' className={`${styles.button} ${styles.button_phone}`}>Оставить телефон</Link>
+            </li>
+            <li>
+              <Link href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20проконсультироваться"
+                className={`${styles.button} ${styles.button_whatsapp}`}>Написать в WhatsApp</Link>
+            </li>
+          </ul>
           <p className={styles.description}>посмотреть доступные даты:</p>
-          <Link href='/enlist/calendar' className={`${styles.button} ${styles.button_calendar}`}>В календаре</Link>
+          <ul className={styles.list}>
+            <li>
+              <Link href='/enlist/calendar' className={`${styles.button} ${styles.button_calendar}`}>В календаре</Link>
+            </li>
+          </ul>
         </section>
       </Layout>
       <Footer />

@@ -52,10 +52,17 @@
   }
 }
 
-.button {
-  margin-top: 20px;
+.list {
+  display: flex;
+  flex-direction: column;
   width: 40%;
   min-width: 280px;
+  list-style: none;
+}
+
+.button {
+  display: block;
+  margin-top: 20px;
   padding: 12px;
   color: #000;
   font-family: var(--text-font);
