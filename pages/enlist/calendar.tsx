@@ -15,6 +15,7 @@ import { useMemo } from 'react';
 import { ParsedUrlQuery } from 'querystring';
 import { BLOCK_TIME, DISPLAYED_DAY, END_WORK, START_WORK } from '@/config/calendar.config';
 import { getClosedDays } from '@/api/closed-days';
+import Link from 'next/link';
 
 interface Entry {
   date: Date
@@ -52,7 +53,7 @@ interface ClosedDays {
 const checkIsClosed = (closedDay: ClosedDay[], calendarDay: number) => {
   if (closedDay === undefined || closedDay.length === 0) return
   for (let day of closedDay) {
-     if (Number(day.date) === calendarDay) return true
+    if (Number(day.date) === calendarDay) return true
   }
   return false
 }
@@ -83,7 +84,8 @@ export default function Calendar({ entries, closedDays, error }: InferGetServerS
   const dates = getNextDatesInterval(DISPLAYED_DAY, BLOCK_TIME)
 
   const redirectToForm = (query: any) => {
-    router.replace({
+    if (error) router.replace('/enlist')
+    else router.replace({
       pathname: '/enlist/calendar/enlist-form',
       query
     }, '/enlist/calendar/enlist-form')
@@ -126,14 +128,21 @@ export default function Calendar({ entries, closedDays, error }: InferGetServerS
       <section className={styles.content}>
         <h1 className={styles.header}>Выберите подходящую дату</h1>
         <p className={styles.paragraph}>доступное время: с {START_WORK} до {END_WORK}</p>
+        {error &&
+          <p className={styles.error}>
+            Не удалось получить данные о записях.
+            &nbsp;<Link href='/enlist'>Запишитесь</Link>&nbsp;
+            через WhatsApp или Telegram.
+          </p>
+        }
         {dataEntries.map((entry, index) =>
           <DateCard
-           openForm={redirectToForm}
-           entry={entry} 
-           key={index}
-           isClosed={checkIsClosed(closedDays, entry.date.timestamp)}
-           error={error} 
-           />
+            openForm={redirectToForm}
+            entry={entry}
+            key={index}
+            isClosed={checkIsClosed(closedDays, entry.date.timestamp)}
+            error={error}
+          />
         )}
       </section>
       <Footer />

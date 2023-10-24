@@ -45,3 +45,19 @@
   font-family: inherit;
   font-size: 1.2rem;
 }
+
+.error {
+  font-size: 0.8rem;
+  color: var(--error);
+  text-align: center;
+  margin-bottom: 10px;
+
+  @include variables.desktop {
+    font-size: 1rem;
+  }
+
+  a {
+    text-decoration: underline;
+    font-style: italic;
+  }
+}
