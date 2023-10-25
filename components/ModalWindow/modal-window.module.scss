@@ -23,6 +23,7 @@
   background-color: #050506d1;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   &::after, &::before {
     content: "";

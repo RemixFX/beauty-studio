@@ -1,21 +1,25 @@
 import styles from './modal-window.module.scss'
-import { IResponseData } from '@/pages/enlist/calendar/enlist-form'
 import { ApolloError } from '@apollo/client';
 import { useRouter } from 'next/router';
 
-interface ModalWindowProps {
-  data: IResponseData | null | undefined;
-  loading: boolean;
-  error: ApolloError | undefined;
+interface ModalWindowData {
+  id?: string;
+  date?: string;
+  time?: string;
 }
 
-export default function ModalWindow({ data, loading, error }: ModalWindowProps) {
+interface ModalWindowProps {
+  data: ModalWindowData | undefined
+  loading: boolean;
+  error: ApolloError | undefined;
+  errorMessage: string;
+}
+
+const parseData = (date: string) => new Date(Number(date)).toLocaleDateString()
+
+export default function ModalWindow({ data, loading, error, errorMessage }: ModalWindowProps) {
 
   const router = useRouter()
-  let date = ''
-  if (data) {
-    date = new Date(Number(data!.createEntry.date)).toLocaleDateString()
-  }
 
   const redirect = () => {
     router.push('/enlist/calendar')
@@ -24,13 +28,18 @@ export default function ModalWindow({ data, loading, error }: ModalWindowProps) 
   return (
     <div className={styles.modal}>
       <div className={styles.layout}>
-        {data &&
+        {data?.date &&
           <div className={styles.info}>
             <p className={styles.message}>Вы успешно записались на</p>
             <p className={`${styles.message} ${styles.message_type_number}`}>
-              {data.createEntry.time} {date}
+              {data.time} {parseData(data.date)}
             </p>
           </div>
+        }
+        {data?.id &&
+          <p className={`${styles.message} ${styles.message_align}`}>
+            Заявка успешно отправлена
+          </p>
         }
         {loading &&
           <div className={styles.loader}>
@@ -42,7 +51,7 @@ export default function ModalWindow({ data, loading, error }: ModalWindowProps) 
         {error &&
           <div className={styles.info}>
             <p className={`${styles.message} ${styles.message_type_error}`}>
-              {error.networkError ? 'Не удалось записаться. Попробуйте позже или выберите другой вариант записи.' : error.message}
+              {error.networkError ? errorMessage : error.message}
             </p>
           </div>
         }

@@ -28,7 +28,7 @@ export interface IFormInput {
   phone: string;
 }
 
-export interface IResponseData {
+ interface IResponseData {
   createEntry: {
     date: string;
     time: string;
@@ -136,7 +136,16 @@ export default function EnlistForm() {
         <title>Запись на процедуру</title>
       </Head>
       <NextNProgress />
-      {(data || loading || error) && <ModalWindow data={data} loading={loading} error={error} />}
+      {(data || loading || error) && 
+      <ModalWindow
+       data={{
+        date: data?.createEntry.date,
+        time: data?.createEntry.time,
+       }}
+       loading={loading}
+       error={error} 
+       errorMessage={'Не удалось записаться. Попробуйте позже или выберите другой вариант записи.'}
+      />}
       <section className={styles.content}>
       <h1 className={styles.header}>Записаться на {query.day} {query.month}</h1>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
