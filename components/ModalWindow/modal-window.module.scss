@@ -108,4 +108,12 @@
   height: 30px;
   border-radius: 5px;
   background: var(--yellow);
+
+  &:hover {
+    border-color: #fff;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }

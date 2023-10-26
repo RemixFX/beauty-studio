@@ -46,7 +46,8 @@ export default function Enlist() {
           <p className={styles.description}>или попросить консультацию:</p>
           <ul className={styles.list}>
             <li>
-              <Link href='/call-back' className={`${styles.button} ${styles.button_phone}`}>Оставить телефон</Link>
+              <button className={`${styles.button} ${styles.button_phone}`}
+                onClick={() => router.replace('/call-back')}>Оставить телефон</button>
             </li>
             <li>
               <Link href="https://wa.me/+79883670897?text=Здравствуйте!%20Хочу%20проконсультироваться"

@@ -46,10 +46,8 @@ export default function CallBack() {
   }
 
   const closeForm = () => {
-    router.push('/enlist')
+    router.replace('/enlist')
   }
-
-  console.log(data, loading, error)
 
   return (
     <>
