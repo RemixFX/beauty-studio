@@ -6,16 +6,16 @@
   padding: 1rem;
 }
 
-.container {
-  
-}
-
 .adress span{
   font-style: italic;
 }
 
-.adress, .copyright, .contact, .groups {
-  padding-bottom: 8px;
+.container {
+  margin-bottom: 8px;
+}
+
+.contact:hover {
+  border-bottom: 1px solid var(--yellow);
 }
 
 .groups {
@@ -25,8 +25,35 @@
 }
 
 .group {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1rem;
   padding: 2px 0;
   margin: 5px 10px;
-  border-top: 1px solid var(--yellow);
-  border-bottom: 1px solid var(--yellow);
+  color: var(--yellow);
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-color: var(--yellow);
+  }
 }
+
+.logo {
+  width: 29px;
+  height: 29px;
+  margin-right: 4px;
+
+  &_vk {
+    background: url(../../public/vk-logo.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &_ig {
+    background: url(../../public/ig-logo.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+

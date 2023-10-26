@@ -1,0 +1,14 @@
+.container {
+  z-index: 10;
+  position: fixed;
+  top: 80vh;
+  right: 5vw;
+}
+
+.button {
+  width: 60px;
+  height: 60px;
+  background: url(../../public/arrow_scroll.svg);
+  background-size: contain;
+  border: none;
+}

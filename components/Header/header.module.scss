@@ -41,6 +41,22 @@
 
 .link {
   width: 100%;
-  text-align: center;
   font-size: 1.2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  display: none;
+
+  @include variables.tablet {
+    display: inline;
+    background: url(../../public/phone-logo.svg);
+    height: 24px;
+    width: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 3px;
+  }
 }

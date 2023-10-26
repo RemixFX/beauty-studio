@@ -12,7 +12,10 @@ export default function Header () {
       <NavPanel/>
       <NavPanelDesktop/>
       <div className={styles.container}>
-        <a href='tel:89883670897' title='Позвонить' className={styles.link}>8 (988) 367-08-97</a>
+        <a href='tel:89883670897' title='Позвонить' className={styles.link}>
+          <span className={styles.logo}></span>
+          8 (988) 367-08-97
+          </a>
         <Link href='/enlist' className={styles.button}>Записаться</Link>
       </div>
     </header>

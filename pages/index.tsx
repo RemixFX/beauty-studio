@@ -11,6 +11,7 @@ import cardDataServices from '@/config/cardDataServices'
 import { useEffect, useRef, useState } from 'react'
 import CardModalDesktop from '@/components/desktop/CardModalDesktop/card-modal-desktop'
 import { ICardService } from '@/types/ICardService'
+import ScrollToTop from '@/components/ScrollToTopButton/ScrollToTopButton'
 
 export default function Home() {
 
@@ -103,6 +104,7 @@ export default function Home() {
         </section>
       }
       <Footer />
+      <ScrollToTop/>
     </>
   )
 }
